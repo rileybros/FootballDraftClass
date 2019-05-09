@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">FootballDraftClass</string>
+    <string name="app_name">Draft Class Creator</string>
+    <string name="description">An app that will take your NCAA football characters and convert them to rookie level Madden players!!</string>
+    <string name="title_activity_home_page">HomePage</string>
 </resources>
