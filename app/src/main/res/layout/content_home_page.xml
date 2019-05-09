@@ -27,7 +27,8 @@
         android:layout_marginTop="150dp"
         android:layout_below="@+id/Instructions"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="CreatePlayerOnClick"/>
 
     <Button
         android:id="@+id/DraftClass"
