@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.footballdraftclass.MainActivity">
 
     <TextView
         android:id="@+id/Welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="75dp"
         android:textSize="32dp"
         android:gravity="center"
         android:text="Welcome to the Football Draft Class Creator" />
@@ -34,6 +34,7 @@
         android:text="Continue"
         android:textSize="20dp"
         android:layout_marginTop="150dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:onClick="ContinueButtonOnClick"/>
 
 </RelativeLayout>
