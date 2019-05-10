@@ -27,4 +27,8 @@ public class HomePage extends AppCompatActivity {
     public void CreatePlayerOnClick(View view) {
         startActivity(new Intent(getApplicationContext(), Create_Player.class));
     }
+
+    public void CreateCurrentDraftOnClick(View view){
+
+    }
 }
