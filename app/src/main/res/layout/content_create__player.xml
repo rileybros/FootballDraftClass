@@ -24,21 +24,23 @@
             android:text="Quarterback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClick"/>
+            android:onClick="Group1Click"/>
 
         <RadioButton
             android:id="@+id/RB"
             android:textSize="18dp"
             android:text="Running Back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="Group1Click"/>
 
         <RadioButton
             android:id="@+id/FB"
             android:text="Fullback"
             android:textSize="18dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="Group1Click"/>
     </RadioGroup>
 
     <RadioGroup
@@ -54,7 +56,8 @@
             android:textSize="18dp"
             android:text="Wide Receiver"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="Group2Click"/>
     </RadioGroup>
 
 </RelativeLayout>
