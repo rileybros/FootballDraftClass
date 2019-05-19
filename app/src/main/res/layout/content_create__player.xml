@@ -45,6 +45,7 @@
 
     <RadioGroup
         android:id="@+id/positionsgroup2"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/positionsgroup1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,6 +59,93 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Group2Click"/>
+
+        <RadioButton
+            android:id="@+id/TE"
+            android:textSize="18dp"
+            android:text="Tight End"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Group2Click"/>
+
+        <RadioButton
+            android:id="@+id/OL"
+            android:textSize="18dp"
+            android:text="Offensive Line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Group2Click"/>
     </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/positionsgroup3"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/positionsgroup2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/DL"
+            android:textSize="18dp"
+            android:text="Defensive Lineman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Group3Click"/>
+
+        <RadioButton
+            android:id="@+id/LB"
+            android:textSize="18dp"
+            android:text="Linebacker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Group3Click"/>
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/positionsgroup4"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/positionsgroup3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/CB"
+            android:textSize="18dp"
+            android:text="Cornerback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Group4Click"/>
+
+        <RadioButton
+            android:id="@+id/FS"
+            android:textSize="18dp"
+            android:text="Free Safety"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Group4Click"/>
+
+        <RadioButton
+            android:id="@+id/SS"
+            android:textSize="18dp"
+            android:text="Strong Safety"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Group4Click"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/Create"
+        android:layout_marginTop="200dp"
+        android:layout_below="@+id/positionsgroup4"
+        android:text="Create"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickPlayerAttributes"/>
 
 </RelativeLayout>

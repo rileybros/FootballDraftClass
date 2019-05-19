@@ -9,10 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Create_Player"></activity>
+        <activity
+            android:name=".Create_Player"
+            android:label="Pick Position"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".HomePage"
             android:label="@string/title_activity_home_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Quarterback"
+            android:label="Quarterback Creator"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
