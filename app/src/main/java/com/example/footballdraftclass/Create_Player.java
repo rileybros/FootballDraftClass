@@ -1,6 +1,7 @@
 package com.example.footballdraftclass;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -92,6 +93,7 @@ public class Create_Player extends AppCompatActivity {
 
     public void onClickPlayerAttributes(View view) {
         if (QB.isChecked()){
+            startActivity(new Intent(getApplicationContext(), Quarterback.class));
             finish();
         }
         else if (RB.isChecked()){
