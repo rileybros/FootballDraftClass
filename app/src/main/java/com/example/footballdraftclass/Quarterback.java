@@ -10,13 +10,17 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
 
 
 public class Quarterback extends AppCompatActivity {
 
-    int speedInt, accelInt, agileInt, awareInt, THPInt, THAInt, BTKInt, ELUInt, TRKInt, CARInt, STAInt, InjInt;
+    int speedInt, accelInt, agileInt, awareInt, THPInt;
+    int THAInt, BTKInt, ELUInt, TRKInt, CARInt, STAInt, InjInt;
+
+    DatabaseHelper mDBhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -33,6 +37,58 @@ public class Quarterback extends AppCompatActivity {
 
 
     }
+
+    public class QuarterbackPlayer extends Offense {
+
+        //QB-only Ratings
+        double 	ProTHP;
+        double 	STA;
+        double 	MTA;
+        double 	DTA ;
+        double 	PAC;
+        double 	TOR;
+        double 	TUP;
+        double	BSK;
+
+
+        //Base Ratings
+        double  NCAATHP;
+        double  NCAATHA;
+
+        public QuarterbackPlayer() {
+            Position = "Quarterback";
+
+            ProTHP  = 0;        NCAATHA = 0;
+            STA     = 0;        NCAATHP = 0;
+            MTA     = 0;
+            DTA     = 0;
+            PAC     = 0;
+            TOR     = 0;
+            TUP     = 0;
+            BSK     = 0;
+
+            update();
+        }
+
+        public void update() {
+            this.FullName   = getFirstName().getText().toString() + " " + getLastName().getText().toString();
+            this.Class      = getYearClass();
+            this.height     = getHeight();
+            this.Speed      = getSpeedInt();
+            this.Accel      = getAccelInt();
+            this.Agile      = getAgileInt();
+            this.Aware      = getAwareInt();
+            this.NCAATHP    = getTHPInt();
+            this.NCAATHA    = getTHAInt();
+            this.BreakTack  = getBTKInt();
+            this.Elusive    = getELUInt();
+            this.Trucking   = getTRKInt();
+            this.Carry      = getCARInt();
+            this.Stamina    = getSTAInt();
+            this.Injury     = getInjInt();
+        }
+    }
+
     public void makeSpinners() {
         Spinner spinner = findViewById(R.id.ClassYear);
         Spinner spinner1 = findViewById(R.id.Height);
@@ -44,63 +100,62 @@ public class Quarterback extends AppCompatActivity {
         spinner1.setAdapter(adapter1);
     }
 
-
-    public int getSpeedInt() {
+    public double getSpeedInt() {
         String speed = this.getSpeed().getText().toString();
         speedInt = Integer.parseInt(speed);
         return(speedInt);
     }
-    public int getAccelInt() {
+    public double getAccelInt() {
         String accel = this.getAcceleration().getText().toString();
         accelInt = Integer.parseInt(accel);
         return(accelInt);
     }
-    public int getAgileInt() {
+    public double getAgileInt() {
         String agile = this.getAgility().getText().toString();
         agileInt = Integer.parseInt(agile);
         return(agileInt);
     }
-    public int getAwareInt() {
+    public double getAwareInt() {
         String aware = this.getAwareness().getText().toString();
         awareInt = Integer.parseInt(aware);
         return (awareInt);
     }
-    public int getTHPInt() {
+    public double getTHPInt() {
         String THP = this.getThrowPower().getText().toString();
         THPInt = Integer.parseInt(THP);
         return(THPInt);
     }
-    public int getTHAInt() {
+    public double getTHAInt() {
         String THA = this.getThrowAccuracy().getText().toString();
         THAInt = Integer.parseInt(THA);
         return (THAInt);
     }
-    public int getBTKInt() {
+    public double getBTKInt() {
         String BTK = this.getBreakTackle().getText().toString();
         BTKInt = Integer.parseInt(BTK);
         return(BTKInt);
     }
-    public int getELUInt() {
+    public double getELUInt() {
         String ELU = this.getElusiveness().getText().toString();
         ELUInt = Integer.parseInt(ELU);
         return (ELUInt);
     }
-    public int getTRKInt() {
+    public double getTRKInt() {
         String Truck = this.getTrucking().getText().toString();
         TRKInt = Integer.parseInt(Truck);
         return TRKInt;
     }
-    public int getCARInt() {
+    public double getCARInt() {
         String CAR = this.getCarrying().getText().toString();
         CARInt = Integer.parseInt(CAR);
         return (CARInt);
     }
-    public int getSTAInt() {
+    public double getSTAInt() {
         String STA = this.getStamina().getText().toString();
         STAInt = Integer.parseInt(STA);
         return STAInt;
     }
-    public int getInjInt() {
+    public double getInjInt() {
         String Inj = this.getInjury().getText().toString();
         InjInt = Integer.parseInt(Inj);
         return InjInt;
@@ -367,13 +422,31 @@ public class Quarterback extends AppCompatActivity {
             return;
         }
         else{
-            update1();
+            create();
+            finish();
         }
     }
 
-    private void update1() {
-
+    private void create() {
+        QuarterbackPlayer newer = new QuarterbackPlayer();
+        AddData(newer.FullName, "Name");
     }
+
+    public void AddData(String Entry, String Column){
+        boolean insertData = mDBhelper.addData(Entry, Column);
+
+        if(insertData){
+            toastMessage("Successful");
+        }
+        else{
+            toastMessage("Fail");
+        }
+    }
+
+    private void toastMessage(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 
     private EditText getFirstName() {
         return (EditText) this.findViewById(R.id.FirstNameEdit);
@@ -384,7 +457,6 @@ public class Quarterback extends AppCompatActivity {
     private String getYearClass() {
         Spinner spinner = findViewById(R.id.ClassYear);
         String text = spinner.getSelectedItem().toString();
-        System.out.println(text);
         return text;
     }
     private String getHeight() {
