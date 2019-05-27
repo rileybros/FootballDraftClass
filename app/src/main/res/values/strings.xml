@@ -1,5 +1,6 @@
 <resources>
     <string-array name="year_array">
+        <item>Choose Class</item>
         <item>Sophomore (Redshirt)</item>
         <item>Junior</item>
         <item>Junior (Redshirt)</item>
@@ -7,6 +8,7 @@
         <item>Senior (Redshirt)</item>
     </string-array>
     <string-array name="heights">
+        <item>Choose Height</item>
         <item>5-6</item>
         <item>5-7</item>
         <item>5-8</item>
@@ -30,4 +32,5 @@
     <string name="description">An app that will take your NCAA football characters and convert them to rookie level Madden players!!</string>
     <string name="title_activity_home_page">HomePage</string>
     <string name="Instructions_homepage">Please select the option you would like to view.</string>
+    <string name="height">Height</string>
 </resources>
