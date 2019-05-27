@@ -3,8 +3,6 @@ package com.example.footballdraftclass;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +29,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void CreateCurrentDraftOnClick(View view){
-        this.displayFunctionNotAvailable();
+        startActivity(new Intent(getApplicationContext(), CreateDraft.class));
     }
 
     private void displayFunctionNotAvailable() {

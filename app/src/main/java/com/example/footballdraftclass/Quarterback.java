@@ -27,7 +27,7 @@ public class Quarterback extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quarterback);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        mDBhelper = new DatabaseHelper(this);
+        mDBhelper = new DatabaseHelper(this, "Quarterbacks");
         setSupportActionBar(toolbar);
         makeSpinners();
 
@@ -430,6 +430,7 @@ public class Quarterback extends AppCompatActivity {
     private void create() {
         QuarterbackPlayer newer = new QuarterbackPlayer();
         AddData(newer.FullName, "Name");
+        finish();
     }
 
     public void AddData(String Entry, String Column){

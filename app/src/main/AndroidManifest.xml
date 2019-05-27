@@ -21,6 +21,10 @@
             android:name=".Quarterback"
             android:label="Quarterback Creator"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateDraft"
+            android:label="Draft Class"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
