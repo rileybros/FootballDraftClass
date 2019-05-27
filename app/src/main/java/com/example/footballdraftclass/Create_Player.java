@@ -90,6 +90,22 @@ public class Create_Player extends AppCompatActivity {
                 show();
     }
 
+    private void displayFunctionNotAvailable() {
+        new AlertDialog.Builder(this)
+                .setMessage("Player functionality not available at this time. Please choose a different position.").
+                setPositiveButton(
+                        "OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }
+                ).
+                create().
+                show();
+    }
+
 
     public void onClickPlayerAttributes(View view) {
         if (QB.isChecked()){
@@ -97,34 +113,34 @@ public class Create_Player extends AppCompatActivity {
             finish();
         }
         else if (RB.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (WR.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (FB.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (TE.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (OL.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (DL.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (LB.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (CB.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (FS.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else if (SS.isChecked()){
-            finish();
+            displayFunctionNotAvailable();
         }
         else{
             helpme();

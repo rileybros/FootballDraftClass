@@ -19,6 +19,7 @@
         <EditText
             android:id="@+id/FirstNameEdit"
             android:hint="Enter Player's First Name"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:layout_width="400dp"
             android:layout_height="wrap_content" />
@@ -40,5 +41,42 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/YearinSchool"
+        android:textSize="20dp"
+        android:text="Choose Class: "
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/ClassYear"
+        android:layout_toRightOf="@+id/YearinSchool"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/lastname"
+        android:layout_marginTop="10dp"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"></Spinner>
+
+    <EditText
+        android:id="@+id/Weight"
+        android:hint="Enter Weight"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/YearinSchool"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/Height"
+        android:layout_toRightOf="@+id/Weight"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/YearinSchool"
+        android:layout_marginTop="15dp"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"></Spinner>
 
 </RelativeLayout>
