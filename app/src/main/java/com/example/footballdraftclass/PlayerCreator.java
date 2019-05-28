@@ -2,6 +2,7 @@ package com.example.footballdraftclass;
 
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,19 +16,20 @@ import android.widget.Toast;
 import org.apache.commons.lang3.StringUtils;
 
 
-public class RunningBack extends AppCompatActivity {
+public class Quarterback extends AppCompatActivity {
 
-    int speedInt, accelInt, agileInt, awareInt;
-    int BTKInt, ELUInt, TRKInt, CARInt, STAInt, InjInt;
+    int speedInt, accelInt, agileInt, awareInt, THPInt;
+    int THAInt, BTKInt, ELUInt, TRKInt, CARInt, STAInt, InjInt;
 
     DatabaseHelper mDBhelper;
+
+    private String selectedDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rb);
+        setContentView(R.layout.activity_quarterback);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        mDBhelper = new DatabaseHelper(this, "RunningBacks");
         setSupportActionBar(toolbar);
         makeSpinners();
 
@@ -36,19 +38,42 @@ public class RunningBack extends AppCompatActivity {
 
         }
 
+        Intent receivedIntent = getIntent();
+
+        selectedDatabase = receivedIntent.getStringExtra("Database");
+
+        mDBhelper = new DatabaseHelper(this, "Quarterbacks");
 
     }
 
-    public class RunningBackPlayer extends Offense {
+    public class QuarterbackPlayer extends Offense {
 
+        //QB-only Ratings
+        double 	ProTHP;
+        double 	STA;
+        double 	MTA;
+        double 	DTA ;
+        double 	PAC;
+        double 	TOR;
+        double 	TUP;
+        double	BSK;
 
 
         //Base Ratings
         double  NCAATHP;
         double  NCAATHA;
 
-        public RunningBackPlayer() {
-            Position = "Running Back";
+        public QuarterbackPlayer() {
+            Position = "Quarterback";
+
+            ProTHP  = 0;        NCAATHA = 0;
+            STA     = 0;        NCAATHP = 0;
+            MTA     = 0;
+            DTA     = 0;
+            PAC     = 0;
+            TOR     = 0;
+            TUP     = 0;
+            BSK     = 0;
 
             update();
         }
@@ -61,6 +86,8 @@ public class RunningBack extends AppCompatActivity {
             this.Accel      = getAccelInt();
             this.Agile      = getAgileInt();
             this.Aware      = getAwareInt();
+            this.NCAATHP    = getTHPInt();
+            this.NCAATHA    = getTHAInt();
             this.BreakTack  = getBTKInt();
             this.Elusive    = getELUInt();
             this.Trucking   = getTRKInt();
@@ -101,6 +128,16 @@ public class RunningBack extends AppCompatActivity {
         awareInt = Integer.parseInt(aware);
         return (awareInt);
     }
+    public double getTHPInt() {
+        String THP = this.getThrowPower().getText().toString();
+        THPInt = Integer.parseInt(THP);
+        return(THPInt);
+    }
+    public double getTHAInt() {
+        String THA = this.getThrowAccuracy().getText().toString();
+        THAInt = Integer.parseInt(THA);
+        return (THAInt);
+    }
     public double getBTKInt() {
         String BTK = this.getBreakTackle().getText().toString();
         BTKInt = Integer.parseInt(BTK);
@@ -132,7 +169,7 @@ public class RunningBack extends AppCompatActivity {
         return InjInt;
     }
 
-    public void RunningBackErrorCheck(View view) {
+    public void QuarterbackErrorCheck(View view) {
         if (StringUtils.isEmpty(this.getFirstName().getText().toString())) {
             new AlertDialog.Builder(this)
                     .setMessage("Please Enter Player's First Name")
@@ -209,6 +246,24 @@ public class RunningBack extends AppCompatActivity {
                     .create()
                     .show();
             this.getAwareness().requestFocus();
+
+            return;
+        }
+        if (StringUtils.isEmpty(this.getThrowPower().getText().toString())) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Please Enter Player's Throw Power rating")
+                    .create()
+                    .show();
+            this.getThrowPower().requestFocus();
+
+            return;
+        }
+        if (StringUtils.isEmpty(this.getThrowAccuracy().getText().toString())) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Please Enter Player's Throw Accuracy rating")
+                    .create()
+                    .show();
+            this.getThrowAccuracy().requestFocus();
 
             return;
         }
@@ -302,6 +357,24 @@ public class RunningBack extends AppCompatActivity {
 
             return;
         }
+        if (getTHPInt() >= 100){
+            new AlertDialog.Builder(this)
+                    .setMessage("Player's Throw Power cannot be 100+")
+                    .create()
+                    .show();
+            this.getThrowPower().requestFocus();
+
+            return;
+        }
+        if (getTHAInt() >= 100){
+            new AlertDialog.Builder(this)
+                    .setMessage("Player's Throw Accuracy cannot be 100+")
+                    .create()
+                    .show();
+            this.getThrowAccuracy().requestFocus();
+
+            return;
+        }
         if (getBTKInt() >= 100){
             new AlertDialog.Builder(this)
                     .setMessage("Player's Break Tackle cannot be 100+")
@@ -362,7 +435,7 @@ public class RunningBack extends AppCompatActivity {
     }
 
     private void create() {
-        RunningBackPlayer newer = new RunningBackPlayer();
+        QuarterbackPlayer newer = new QuarterbackPlayer();
         AddData(newer.FullName, "Name");
         finish();
     }
@@ -413,6 +486,12 @@ public class RunningBack extends AppCompatActivity {
     }
     private EditText getAwareness() {
         return (EditText) this.findViewById(R.id.Aware);
+    }
+    private EditText getThrowPower() {
+        return (EditText) this.findViewById(R.id.TP);
+    }
+    private EditText getThrowAccuracy() {
+        return (EditText) this.findViewById(R.id.TA);
     }
     private EditText getBreakTackle() {
         return (EditText) this.findViewById(R.id.BTK);

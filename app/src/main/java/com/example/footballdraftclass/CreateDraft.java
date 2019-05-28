@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class CreateDraftQB extends AppCompatActivity {
 
     private static final String TAG = "Create Draft";
+    private String Database;
 
     DatabaseHelper mDBHelper;
 
@@ -35,8 +36,11 @@ public class CreateDraftQB extends AppCompatActivity {
 
         }
 
+        Intent receivedIntent = getIntent();
+        Database = receivedIntent.getStringExtra("Database");
+
         listView = (ListView) findViewById(R.id.listview);
-        mDBHelper = new DatabaseHelper(this, "Quarterbacks");
+        mDBHelper = new DatabaseHelper(this, Database);
         
         populatelistview();
     }
@@ -69,6 +73,7 @@ public class CreateDraftQB extends AppCompatActivity {
                     Intent next = new Intent(getApplicationContext(), EditPlayer.class);
                     next.putExtra("id", itemID);
                     next.putExtra("name", name);
+                    next.putExtra("Database", Database);
                     startActivity(next);
 
                 }
