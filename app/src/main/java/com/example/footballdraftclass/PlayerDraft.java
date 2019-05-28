@@ -11,19 +11,19 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class Create_Player extends AppCompatActivity {
+public class PlayerDraft extends AppCompatActivity {
 
     private RadioGroup rdgroup1;    private RadioButton QB;     private RadioButton TE;
     private RadioGroup rdgroup2;    private RadioButton RB;     private RadioButton OL;
     private RadioGroup rdgroup3;    private RadioButton WR;     private RadioButton DL;
     private RadioGroup rdgroup4;    private RadioButton FB;     private RadioButton LB;
-                                    private RadioButton CB;     private RadioButton FS;
-                                    private RadioButton SS;
+    private RadioButton CB;     private RadioButton FS;
+    private RadioButton SS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create__player);
+        setContentView(R.layout.activity_player_draft);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -106,14 +106,13 @@ public class Create_Player extends AppCompatActivity {
     }
 
 
-    public void onClickPlayerAttributes(View view) {
+    public void makeDraftClass(View view) {
         if (QB.isChecked()){
-            startActivity(new Intent(getApplicationContext(), Quarterback.class));
+            startActivity(new Intent(getApplicationContext(), CreateDraftQB.class));
             finish();
         }
         else if (RB.isChecked()){
-            startActivity(new Intent(getApplicationContext(), RunningBack.class));
-            finish();
+            startActivity(new Intent(getApplicationContext(), CreateDraftRB.class));
         }
         else if (WR.isChecked()){
             displayFunctionNotAvailable();

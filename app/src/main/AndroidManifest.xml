@@ -22,8 +22,20 @@
             android:label="Quarterback Creator"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateDraft"
-            android:label="Draft Class"
+            android:name=".RunningBack"
+            android:label="Running Back Creator"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PlayerDraft"
+            android:label="Pick Position to see Current Class"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateDraftQB"
+            android:label="Quarterback Draft Class"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".CreateDraftRB"
+            android:label="Running Back Draft Class"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".MainActivity">
             <intent-filter>

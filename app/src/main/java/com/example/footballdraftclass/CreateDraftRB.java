@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class CreateDraft extends AppCompatActivity {
+public class CreateDraftRB extends AppCompatActivity {
 
     private static final String TAG = "Create Draft";
 
@@ -32,8 +32,8 @@ public class CreateDraft extends AppCompatActivity {
         }
 
         listView = (ListView) findViewById(R.id.listview);
-        mDBHelper = new DatabaseHelper(this, "Quarterbacks");
-        
+        mDBHelper = new DatabaseHelper(this, "RunningBacks");
+
         populatelistview();
     }
 

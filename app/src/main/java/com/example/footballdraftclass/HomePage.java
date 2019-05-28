@@ -29,7 +29,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void CreateCurrentDraftOnClick(View view){
-        startActivity(new Intent(getApplicationContext(), CreateDraft.class));
+        startActivity(new Intent(getApplicationContext(), PlayerDraft.class));
     }
 
     private void displayFunctionNotAvailable() {

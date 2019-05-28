@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/content_rb"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".RunningBack"
+    tools:showIn="@layout/activity_rb">
+
+    <LinearLayout
+        android:id="@+id/firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/FirstNameEdit"
+            android:hint="Enter Player's First Name"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lastname"
+        android:layout_below="@+id/firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/LastNameEdit"
+            android:hint="Enter Players's Last Name"
+            android:gravity="center"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/YearinSchool"
+        android:textSize="20dp"
+        android:text="Choose Class: "
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/ClassYear"
+        android:layout_toRightOf="@+id/YearinSchool"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:layout_below="@+id/lastname"
+        android:layout_marginTop="10dp"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"></Spinner>
+
+    <EditText
+        android:id="@+id/Weight"
+        android:hint="Enter Weight"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/YearinSchool"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/Height"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/Weight"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/YearinSchool"
+        android:layout_marginTop="15dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/AttributesPage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/Weight">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/masterattr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/attr1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/SpeedText"
+                        android:text="Speed:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/Speed"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/AccelText"
+                        android:text="Accleration:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/Accel"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/attr2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/AgileText"
+                        android:text="Agility:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/Agile"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/AwareText"
+                        android:text="Awareness:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/Aware"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/attr4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/BTKText"
+                        android:text="Break Tackle:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/BTK"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/ElusiveText"
+                        android:text="Elusiveness:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/Elusive"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/attr5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/TRKText"
+                        android:text="Trucking:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/TRK"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/CarryText"
+                        android:text="Carrying:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/Carry"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/attr6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/StaminaText"
+                        android:text="Stamina:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/Stamina"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/InjuryText"
+                        android:text="Injury:"
+                        android:textSize="18dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/Injury"
+                        android:hint="0 - 99"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ConfirmQuartback"
+                    android:layout_gravity="center"
+                    android:text="Confirm"
+                    android:textSize="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="RunningBackErrorCheck"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>
