@@ -5,7 +5,7 @@ public class Offense {
     String  Class;
     String  Position;
     int     Age;
-    String  height;
+    String  Height;
 
     //Base Attributes        //Pro Base Ratings             //Offense-only Ratings
     double 	Speed;           double 	ProSpeed;           double 	ProBCV;

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class CreateDraftQB extends AppCompatActivity {
+public class CreateDraft extends AppCompatActivity {
 
     private static final String TAG = "Create Draft";
     private String Database;

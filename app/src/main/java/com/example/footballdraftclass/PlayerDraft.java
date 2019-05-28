@@ -108,11 +108,16 @@ public class PlayerDraft extends AppCompatActivity {
 
     public void makeDraftClass(View view) {
         if (QB.isChecked()){
-            startActivity(new Intent(getApplicationContext(), CreateDraftQB.class));
+            Intent newIntent = (new Intent(getApplicationContext(), CreateDraft.class));
+            newIntent.putExtra("Database", "Quarterbacks");
+            startActivity(newIntent);
             finish();
         }
         else if (RB.isChecked()){
-            startActivity(new Intent(getApplicationContext(), CreateDraftRB.class));
+            Intent newIntent = (new Intent(getApplicationContext(), CreateDraft.class));
+            newIntent.putExtra("Database", "RunningBacks");
+            startActivity(newIntent);
+            finish();
         }
         else if (WR.isChecked()){
             displayFunctionNotAvailable();

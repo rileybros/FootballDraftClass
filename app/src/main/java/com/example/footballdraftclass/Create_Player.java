@@ -108,11 +108,15 @@ public class Create_Player extends AppCompatActivity {
 
     public void onClickPlayerAttributes(View view) {
         if (QB.isChecked()){
-            startActivity(new Intent(getApplicationContext(), Quarterback.class));
+            Intent newIntent = new Intent(getApplicationContext(), PlayerCreator.class);
+            newIntent.putExtra("Database", "Quarterbacks");
+            startActivity(newIntent);
             finish();
         }
         else if (RB.isChecked()){
-            startActivity(new Intent(getApplicationContext(), RunningBack.class));
+            Intent newIntent = (new Intent(getApplicationContext(), PlayerCreator.class));
+            newIntent.putExtra("Database", "RunningBacks");
+            startActivity(newIntent);
             finish();
         }
         else if (WR.isChecked()){
