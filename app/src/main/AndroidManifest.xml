@@ -29,6 +29,10 @@
             android:name=".CreateDraft"
             android:label="Players Draft Class"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".EditPlayer"
+            android:label="Player Editing Page"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

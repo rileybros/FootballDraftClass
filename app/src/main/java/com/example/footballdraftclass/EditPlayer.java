@@ -45,10 +45,20 @@ public class EditPlayer extends AppCompatActivity {
             public void onClick(View view){
                 String item = name.getText().toString();
                 if(!item.equals("")){
-
+                    mDBhelper.updateName(item, playerid, insertedname);
+                    finish();
                 }else {
                     toastMessage("You must enter Player's name!");
                 }
+            }
+        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDBhelper.deletePlayer(playerid, insertedname);
+                name.setText(" ");
+                toastMessage("Player deleted from database");
+                finish();
             }
         });
     }

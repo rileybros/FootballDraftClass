@@ -58,8 +58,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String queryQB = "SELECT * FROM " + TABLE_NAME;
-        Cursor data = db.rawQuery(queryQB, null);
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
         return data;
     }
 
@@ -69,5 +69,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 name + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
+    }
+
+    public void updateName(String newName, int id, String oldName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL2 + " = '" + newName + "' WHERE " + COL1 +
+                " = '" + id + "'" + " AND " + COL2 + " = '" + oldName + "'";
+        Log.d(TAG, "updateName: query: " + query);
+        Log.d(TAG, "updateName: Setting name to " + newName);
+        db.execSQL(query);
+    }
+
+    public void deletePlayer(int id, String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL1 + " = '" + id + "'" + " AND " +
+                COL2 + " = '" + name + "'";
+        Log.d(TAG, "deletePlayer: query: " + query);
+        Log.d(TAG, "deletePlayer: Deleting " + name + " from database.");
+        db.execSQL(query);
     }
 }

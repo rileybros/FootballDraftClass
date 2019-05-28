@@ -75,7 +75,7 @@ public class CreateDraft extends AppCompatActivity {
                     next.putExtra("name", name);
                     next.putExtra("Database", Database);
                     startActivity(next);
-
+                    finish();
                 }
                 else {
                     toastMessage("No ID is associated with this Name");
