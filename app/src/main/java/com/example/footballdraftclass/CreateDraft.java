@@ -63,7 +63,7 @@ public class CreateDraft extends AppCompatActivity {
                 String name = adapterView.getItemAtPosition(i).toString();
                 Log.d(TAG, "onItemClick: You Clicked on " + name);
 
-                Cursor data = mDBHelper.getItemID(name);
+                Cursor data = mDBHelper.getItem(name, "ID");
                 int itemID = -1;
                 while (data.moveToNext())
                 {
