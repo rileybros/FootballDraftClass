@@ -14,10 +14,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String COL1        = "ID";
     private static final String COL2        = "Name";
-    private static final String COL3        = "School";
+    private static final String COL3        = "Class";
     private static final String COL4        = "Height";
     private static final String COL5        = "Weight";
-    private static final String COL6        = "Class";
+    private static final String COL6        = "School";
 
 
     public DatabaseHelper(Context context, String TABLE_NAME) {
@@ -28,9 +28,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         System.out.println(TABLE_NAME);
-        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 +" TEXT, " + COL6 +" TEXT)";
-        db.execSQL(createTable);
+        if (TABLE_NAME.equals("Quarterbacks")) {
+            String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
+            db.execSQL(createTable);
+        }
+        if (TABLE_NAME.equals("RunningBacks")){
+            String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COL2 + " TEXT, " + COL3 + " TEXT)";
+            db.execSQL(createTable);
+        }
+        else{
+
+        }
+
     }
 
     @Override
@@ -39,12 +50,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String item, String Column) {
+    public boolean addData(String name, String c, String h, double w) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(Column, item);
+        contentValues.put(COL2, name);
+        contentValues.put(COL3, c);
+        contentValues.put(COL4, h);
+        contentValues.put(COL5, w);
 
-        Log.d(TAG, "addData: Adding " + item + "to " + TABLE_NAME + "Column " + Column);
+        Log.d(TAG, "addData: Adding " + name + " to " + TABLE_NAME + " Column " + COL2 + " and " + c + " to " + COL3 + " and " + h + " to " + COL4
+                + " and " + w + " to " + COL5);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 

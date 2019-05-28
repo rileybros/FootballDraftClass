@@ -18,7 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class PlayerCreator extends AppCompatActivity {
 
-    int speedInt, accelInt, agileInt, awareInt, THPInt;
+    int speedInt, accelInt, agileInt, awareInt, THPInt, weightInt;
     int THAInt, BTKInt, ELUInt, TRKInt, CARInt, STAInt, InjInt;
 
     DatabaseHelper mDBhelper;
@@ -81,6 +81,7 @@ public class PlayerCreator extends AppCompatActivity {
             this.FullName   = getFirstName().getText().toString() + " " + getLastName().getText().toString();
             this.Class      = getYearClass();
             this.Height     = getHeight();
+            this.Weight     = getWeightInt();
             this.Speed      = getSpeedInt();
             this.Accel      = getAccelInt();
             this.Agile      = getAgileInt();
@@ -109,6 +110,7 @@ public class PlayerCreator extends AppCompatActivity {
             this.FullName   = getFirstName().getText().toString() + " " + getLastName().getText().toString();
             this.Class      = getYearClass();
             this.Height     = getHeight();
+            this.Weight     = getWeightInt();
             this.Speed      = getSpeedInt();
             this.Accel      = getAccelInt();
             this.Agile      = getAgileInt();
@@ -401,17 +403,17 @@ public class PlayerCreator extends AppCompatActivity {
     private void create() {
         if (selectedDatabase.equals("Quarterbacks")){
             QuarterbackPlayer newer = new QuarterbackPlayer();
-            AddData(newer.FullName, "Name");
+            AddData(newer.FullName, newer.Class, newer.Height, newer.Weight);
             finish();
         }
         if (selectedDatabase.equals("RunningBacks")){
             RunningBackPlayer newer = new RunningBackPlayer();
-            AddData(newer.FullName, "Name");
+            AddData(newer.FullName, newer.Class, " ", 0);
         }
     }
 
-    public void AddData(String Entry, String Column){
-        boolean insertData = mDBhelper.addData(Entry, Column);
+    public void AddData(String Name, String Class, String Height, double Weight) {
+        boolean insertData = mDBhelper.addData(Name, Class, Height, Weight);
 
         if(insertData){
             toastMessage("Successful");
@@ -444,6 +446,12 @@ public class PlayerCreator extends AppCompatActivity {
         String aware = this.getAwareness().getText().toString();
         awareInt = Integer.parseInt(aware);
         return (awareInt);
+    }
+    public double getWeightInt() {
+        String weight = this.getWeight().getText().toString();
+        System.out.println(weight);
+        weightInt = Integer.parseInt(weight);
+        return weightInt;
     }
     public double getTHPInt() {
         String THP = this.getThrowPower().getText().toString();

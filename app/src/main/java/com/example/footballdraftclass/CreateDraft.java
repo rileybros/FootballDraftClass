@@ -47,13 +47,14 @@ public class CreateDraft extends AppCompatActivity {
 
     private void populatelistview() {
         Log.d(TAG, "populatelistview: Displaying data in listview ");
+        Log.d(TAG, "opening: opeing " + Database + " database!");
 
         Cursor data = mDBHelper.getData();
-        ArrayList<String> listarray = new ArrayList<>();
+        ArrayList<String> listArray = new ArrayList<>();
         while(data.moveToNext()){
-            listarray.add(data.getString(1));
+            listArray.add(data.getString(1));
         }
-        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listarray);
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listArray);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
