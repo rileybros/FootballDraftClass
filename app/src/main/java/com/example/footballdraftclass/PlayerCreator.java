@@ -15,11 +15,15 @@ import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+
 
 public class PlayerCreator extends AppCompatActivity {
 
     int speedInt, accelInt, agileInt, awareInt, THPInt, weightInt;
     int THAInt, BTKInt, ELUInt, TRKInt, CARInt, STAInt, InjInt;
+
+    ArrayList<QuarterbackPlayer> qbA;
 
     DatabaseHelper mDBhelper;
 
@@ -39,6 +43,8 @@ public class PlayerCreator extends AppCompatActivity {
         }
 
         Intent receivedIntent = getIntent();
+        Bundle args = receivedIntent.getBundleExtra("Bundle");
+        qbA = (ArrayList<QuarterbackPlayer>)args.getSerializable("ARRAYLISTQB");
         selectedDatabase = receivedIntent.getStringExtra("Database");
 
         mDBhelper = new DatabaseHelper(this, "Quarterbacks");
@@ -94,6 +100,8 @@ public class PlayerCreator extends AppCompatActivity {
             this.Carry      = getCARInt();
             this.Stamina    = getSTAInt();
             this.Injury     = getInjInt();
+
+
         }
 
 
@@ -403,17 +411,36 @@ public class PlayerCreator extends AppCompatActivity {
     private void create() {
         if (selectedDatabase.equals("Quarterbacks")){
             QuarterbackPlayer newer = new QuarterbackPlayer();
-            AddData(newer.FullName, newer.Class, newer.Height, newer.Weight);
+            qbA.add(newer);
+            System.out.println(qbA);
+            AddDataQB(newer.FullName, newer.Class, newer.Height, newer.Weight, newer.Speed, newer.Accel, newer.Agile, newer.Aware, newer.NCAATHP,
+                    newer.NCAATHA, newer.BreakTack, newer.Elusive, newer.Trucking, newer.Carry, newer.Stamina, newer.Injury);
+            for(int i = 0; i < qbA.size(); i++){
+                System.out.println("Printing Quarterback Objects: " + qbA.get(i));
+            }
+
             finish();
         }
         if (selectedDatabase.equals("RunningBacks")){
             RunningBackPlayer newer = new RunningBackPlayer();
-            AddData(newer.FullName, newer.Class, " ", 0);
+            AddDataRB(newer.FullName, newer.Class, " ", 0);
         }
     }
 
-    public void AddData(String Name, String Class, String Height, double Weight) {
-        boolean insertData = mDBhelper.addData(Name, Class, Height, Weight);
+    public void AddDataQB(String Name, String Class, String Height, double Weight, double sp, double acc, double agil, double awa, double thp, double
+                        tha, double btk, double elu, double tru, double carr, double sta, double inj) {
+        boolean insertData = mDBhelper.addDataQB(Name, Class, Height, Weight, sp, acc, agil, awa, thp, tha, btk, elu, tru, carr, sta, inj);
+
+        if(insertData){
+            toastMessage("Successful");
+        }
+        else{
+            toastMessage("Fail");
+        }
+    }
+
+    public void AddDataRB(String Name, String Class, String Height, double Weight) {
+        boolean insertData = mDBhelper.addDataRB(Name, Class, Height, Weight);
 
         if(insertData){
             toastMessage("Successful");
@@ -449,7 +476,6 @@ public class PlayerCreator extends AppCompatActivity {
     }
     public double getWeightInt() {
         String weight = this.getWeight().getText().toString();
-        System.out.println(weight);
         weightInt = Integer.parseInt(weight);
         return weightInt;
     }

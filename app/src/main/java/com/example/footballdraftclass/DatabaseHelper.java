@@ -17,8 +17,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL3        = "Class";
     private static final String COL4        = "Height";
     private static final String COL5        = "Weight";
-    private static final String COL6        = "School";
 
+    //QB ratings
+    private static final String QB1         = "Speed";
+    private static final String QB2         = "Acceleration";
+    private static final String QB3         = "Agility";
+    private static final String QB4         = "Awareness";
+    private static final String QB5         = "ThrowPower";
+    private static final String QB6         = "ThrowAccuracy";
+    private static final String QB7         = "BreakTackle";
+    private static final String QB8         = "Elusiveness";
+    private static final String QB9         = "Trucking";
+    private static final String QB10        = "Carrying";
+    private static final String QB11        = "Stamina";
+    private static final String QB12        = "Injury";
 
     public DatabaseHelper(Context context, String TABLE_NAME) {
         super(context, TABLE_NAME, null, 1);
@@ -30,12 +42,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         System.out.println(TABLE_NAME);
         if (TABLE_NAME.equals("Quarterbacks")) {
             String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
+                    COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " +
+                    QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + QB4 + " INTEGER, " +
+                    QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " +
+                    QB9 + " INTEGER, " + QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
             db.execSQL(createTable);
         }
         if (TABLE_NAME.equals("RunningBacks")){
             String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL2 + " TEXT, " + COL3 + " TEXT)";
+                    COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
             db.execSQL(createTable);
         }
         else{
@@ -50,16 +65,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String name, String c, String h, double w) {
+    public boolean addDataQB(String name, String c, String h, double w, double sp, double acc, double agil, double awa, double thp, double tha, double
+                             btk, double elu, double tru, double car, double sta, double inj) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, name);
         contentValues.put(COL3, c);
         contentValues.put(COL4, h);
         contentValues.put(COL5, w);
+        contentValues.put(QB1, sp);
+        contentValues.put(QB2, acc);
+        contentValues.put(QB3, agil);
+        contentValues.put(QB4, awa);
+        contentValues.put(QB5, thp);
+        contentValues.put(QB6, tha);
+        contentValues.put(QB7, btk);
+        contentValues.put(QB8, elu);
+        contentValues.put(QB9, tru);
+        contentValues.put(QB10, car);
+        contentValues.put(QB11, sta);
+        contentValues.put(QB12, inj);
 
-        Log.d(TAG, "addData: Adding " + name + " to " + TABLE_NAME + " Column " + COL2 + " and " + c + " to " + COL3 + " and " + h + " to " + COL4
-                + " and " + w + " to " + COL5);
+        Log.d(TAG, "addData: Adding all data to Quarterback database");
+
+        long result = db.insert(TABLE_NAME, null, contentValues);
+
+        if (result == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    public boolean addDataRB(String Name, String Class, String Height, double Weight) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL2, Name);
+        contentValues.put(COL3, Class);
+        contentValues.put(COL4, Height);
+        contentValues.put(COL5, Weight);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
