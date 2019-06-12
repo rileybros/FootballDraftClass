@@ -11,12 +11,8 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
 public class Create_Player extends AppCompatActivity {
 
-    ArrayList<PlayerCreator.QuarterbackPlayer> qbA;
 
     private RadioGroup rdgroup1;    private RadioButton QB;     private RadioButton TE;
     private RadioGroup rdgroup2;    private RadioButton RB;     private RadioButton OL;
@@ -38,7 +34,6 @@ public class Create_Player extends AppCompatActivity {
         }
         Intent receivedIntent = getIntent();
         Bundle args = receivedIntent.getBundleExtra("BundleQB");
-        qbA = (ArrayList<PlayerCreator.QuarterbackPlayer>)args.getSerializable("ARRAYLISTQB");
 
         rdgroup1 = findViewById(R.id.positionsgroup1);
         rdgroup2 = findViewById(R.id.positionsgroup2);
@@ -117,10 +112,7 @@ public class Create_Player extends AppCompatActivity {
     public void onClickPlayerAttributes(View view) {
         if (QB.isChecked()){
             Intent newIntent = new Intent(getApplicationContext(), PlayerCreator.class);
-            Bundle args1 = new Bundle();
-            args1.putSerializable("ARRAYLISTQB", (Serializable)qbA);
-            newIntent.putExtra("Database", "Quarterbacks");
-            newIntent.putExtra("Bundle", args1);
+            newIntent.putExtra("Database", "Quarterbacks");;
             startActivity(newIntent);
             finish();
         }

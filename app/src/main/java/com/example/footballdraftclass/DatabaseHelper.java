@@ -32,6 +32,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String QB11        = "Stamina";
     private static final String QB12        = "Injury";
 
+    String createTableQB = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " +
+            QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + QB4 + " INTEGER, " +
+            QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " +
+            QB9 + " INTEGER, " + QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
+
+    String createTableRB = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
+
+    String createTableFB = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
+
     public DatabaseHelper(Context context, String TABLE_NAME) {
         super(context, TABLE_NAME, null, 1);
         this.TABLE_NAME = TABLE_NAME;
@@ -39,24 +51,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        System.out.println(TABLE_NAME);
-        if (TABLE_NAME.equals("Quarterbacks")) {
-            String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " +
-                    QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + QB4 + " INTEGER, " +
-                    QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " +
-                    QB9 + " INTEGER, " + QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
-            db.execSQL(createTable);
-        }
-        if (TABLE_NAME.equals("RunningBacks")){
-            String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
-            db.execSQL(createTable);
-        }
-        else{
-
-        }
-
+        db.execSQL(createTableQB);
+        db.execSQL(createTableRB);
+        db.execSQL(createTableFB);
     }
 
     @Override

@@ -15,15 +15,11 @@ import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-
 
 public class PlayerCreator extends AppCompatActivity {
 
     int speedInt, accelInt, agileInt, awareInt, THPInt, weightInt;
     int THAInt, BTKInt, ELUInt, TRKInt, CARInt, STAInt, InjInt;
-
-    ArrayList<QuarterbackPlayer> qbA;
 
     DatabaseHelper mDBhelper;
 
@@ -44,66 +40,9 @@ public class PlayerCreator extends AppCompatActivity {
 
         Intent receivedIntent = getIntent();
         Bundle args = receivedIntent.getBundleExtra("Bundle");
-        qbA = (ArrayList<QuarterbackPlayer>)args.getSerializable("ARRAYLISTQB");
         selectedDatabase = receivedIntent.getStringExtra("Database");
 
         mDBhelper = new DatabaseHelper(this, "Quarterbacks");
-
-    }
-
-    public class QuarterbackPlayer extends Offense {
-
-        //QB-only Ratings
-        double 	ProTHP;
-        double 	STA;
-        double 	MTA;
-        double 	DTA ;
-        double 	PAC;
-        double 	TOR;
-        double 	TUP;
-        double	BSK;
-
-
-        //Base Ratings
-        double  NCAATHP;
-        double  NCAATHA;
-
-        public QuarterbackPlayer() {
-            Position = "Quarterback";
-
-            ProTHP  = 0;        NCAATHA = 0;
-            STA     = 0;        NCAATHP = 0;
-            MTA     = 0;
-            DTA     = 0;
-            PAC     = 0;
-            TOR     = 0;
-            TUP     = 0;
-            BSK     = 0;
-
-            update();
-        }
-
-        public void update() {
-            this.FullName   = getFirstName().getText().toString() + " " + getLastName().getText().toString();
-            this.Class      = getYearClass();
-            this.Height     = getHeight();
-            this.Weight     = getWeightInt();
-            this.Speed      = getSpeedInt();
-            this.Accel      = getAccelInt();
-            this.Agile      = getAgileInt();
-            this.Aware      = getAwareInt();
-            this.NCAATHP    = getTHPInt();
-            this.NCAATHA    = getTHAInt();
-            this.BreakTack  = getBTKInt();
-            this.Elusive    = getELUInt();
-            this.Trucking   = getTRKInt();
-            this.Carry      = getCARInt();
-            this.Stamina    = getSTAInt();
-            this.Injury     = getInjInt();
-
-
-        }
-
 
     }
     public class RunningBackPlayer extends Offense {
@@ -410,14 +349,10 @@ public class PlayerCreator extends AppCompatActivity {
 
     private void create() {
         if (selectedDatabase.equals("Quarterbacks")){
-            QuarterbackPlayer newer = new QuarterbackPlayer();
-            qbA.add(newer);
-            System.out.println(qbA);
+            Quarterback newer = new Quarterback(getFirstName().getText().toString()+" "+getLastName().getText().toString(), getYearClass(), getHeight(), getWeightInt(), getSpeedInt(), getAccelInt(), getAgileInt(), getAwareInt(),
+                    getTHPInt(), getTHAInt(), getBTKInt(), getELUInt(), getTRKInt(), getCARInt(), getSTAInt(), getInjInt());
             AddDataQB(newer.FullName, newer.Class, newer.Height, newer.Weight, newer.Speed, newer.Accel, newer.Agile, newer.Aware, newer.NCAATHP,
                     newer.NCAATHA, newer.BreakTack, newer.Elusive, newer.Trucking, newer.Carry, newer.Stamina, newer.Injury);
-            for(int i = 0; i < qbA.size(); i++){
-                System.out.println("Printing Quarterback Objects: " + qbA.get(i));
-            }
 
             finish();
         }
@@ -519,6 +454,22 @@ public class PlayerCreator extends AppCompatActivity {
         InjInt = Integer.parseInt(Inj);
         return InjInt;
     }
+
+     /*this.Class      = getYearClass();
+            this.Height     = getHeight();
+            this.Weight     = getWeightInt();
+            this.Speed      = getSpeedInt();
+            this.Accel      = getAccelInt();
+            this.Agile      = getAgileInt();
+            this.Aware      = getAwareInt();
+            this.NCAATHP    = getTHPInt();
+            this.NCAATHA    = getTHAInt();
+            this.BreakTack  = getBTKInt();
+            this.Elusive    = getELUInt();
+            this.Trucking   = getTRKInt();
+            this.Carry      = getCARInt();
+            this.Stamina    = getSTAInt();
+            this.Injury     = getInjInt();*/
 
     public EditText getFirstName() {
         return (EditText) this.findViewById(R.id.FirstNameEdit);

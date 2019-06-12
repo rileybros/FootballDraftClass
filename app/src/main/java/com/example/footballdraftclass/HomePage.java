@@ -9,12 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
 public class HomePage extends AppCompatActivity {
-
-    ArrayList<PlayerCreator.QuarterbackPlayer> qbA = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +26,6 @@ public class HomePage extends AppCompatActivity {
 
     public void CreatePlayerOnClick(View view) {
         Intent newIntent = (new Intent(getApplicationContext(), Create_Player.class));
-        Bundle args = new Bundle();
-        args.putSerializable("ARRAYLISTQB", (Serializable)qbA);
-        newIntent.putExtra("BundleQB", args);
         startActivity(newIntent);
     }
 
