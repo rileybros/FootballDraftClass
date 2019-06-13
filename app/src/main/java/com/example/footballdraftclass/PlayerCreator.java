@@ -35,7 +35,7 @@ public class PlayerCreator extends AppCompatActivity {
         if (selectedDatabase.equals("Quarterbacks")) {
             setContentView(R.layout.activity_quarterback);
         }
-        if (selectedDatabase.equals("Runningbacks")){
+        if (selectedDatabase.equals("RunningBacks")){
             setContentView(R.layout.activity_runningback);
         }
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -406,24 +406,6 @@ public class PlayerCreator extends AppCompatActivity {
                     .create()
                     .show();
             this.getAwareness().requestFocus();
-
-            return;
-        }
-        if (StringUtils.isEmpty(this.getThrowPower().getText().toString())) {
-            new AlertDialog.Builder(this)
-                    .setMessage("Please Enter Player's Throw Power rating")
-                    .create()
-                    .show();
-            this.getThrowPower().requestFocus();
-
-            return;
-        }
-        if (StringUtils.isEmpty(this.getThrowAccuracy().getText().toString())) {
-            new AlertDialog.Builder(this)
-                    .setMessage("Please Enter Player's Throw Accuracy rating")
-                    .create()
-                    .show();
-            this.getThrowAccuracy().requestFocus();
 
             return;
         }
