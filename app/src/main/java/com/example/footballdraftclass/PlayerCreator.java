@@ -45,31 +45,6 @@ public class PlayerCreator extends AppCompatActivity {
         mDBhelper = new DatabaseHelper(this, "Quarterbacks");
 
     }
-    public class RunningBackPlayer extends Offense {
-
-        public RunningBackPlayer(){
-
-
-            update();
-        }
-
-        public void update() {
-            this.FullName   = getFirstName().getText().toString() + " " + getLastName().getText().toString();
-            this.Class      = getYearClass();
-            this.Height     = getHeight();
-            this.Weight     = getWeightInt();
-            this.Speed      = getSpeedInt();
-            this.Accel      = getAccelInt();
-            this.Agile      = getAgileInt();
-            this.Aware      = getAwareInt();
-            this.BreakTack  = getBTKInt();
-            this.Elusive    = getELUInt();
-            this.Trucking   = getTRKInt();
-            this.Carry      = getCARInt();
-            this.Stamina    = getSTAInt();
-            this.Injury     = getInjInt();
-        }
-    }
 
     public void makeSpinners() {
         Spinner spinner = findViewById(R.id.ClassYear);
@@ -357,13 +332,15 @@ public class PlayerCreator extends AppCompatActivity {
             finish();
         }
         if (selectedDatabase.equals("RunningBacks")){
-            RunningBackPlayer newer = new RunningBackPlayer();
-            AddDataRB(newer.FullName, newer.Class, " ", 0);
+            RunningBackPlayer newer = new RunningBackPlayer(getFirstName().getText().toString()+" "+getLastName().getText().toString(), getYearClass(), getHeight(), getWeightInt(), getSpeedInt(), getAccelInt(), getAgileInt(), getAwareInt(),
+                    getBTKInt(), getELUInt(), getTRKInt(), getCARInt(), getSTAInt(), getInjInt());
+            AddDataRB(newer.FullName, newer.Class, newer.Height, newer.Weight, newer.Speed, newer.Accel, newer.Agile, newer.Aware,
+                    newer.BreakTack, newer.Elusive, newer.Trucking, newer.Carry, newer.Stamina, newer.Injury);
         }
     }
 
-    public void AddDataQB(String Name, String Class, String Height, double Weight, double sp, double acc, double agil, double awa, double thp, double
-                        tha, double btk, double elu, double tru, double carr, double sta, double inj) {
+    public void AddDataQB(String Name, String Class, String Height, double Weight, double sp, double acc, double agil, double awa, double thp,
+                          double tha, double btk, double elu, double tru, double carr, double sta, double inj) {
         boolean insertData = mDBhelper.addDataQB(Name, Class, Height, Weight, sp, acc, agil, awa, thp, tha, btk, elu, tru, carr, sta, inj);
 
         if(insertData){
@@ -374,8 +351,9 @@ public class PlayerCreator extends AppCompatActivity {
         }
     }
 
-    public void AddDataRB(String Name, String Class, String Height, double Weight) {
-        boolean insertData = mDBhelper.addDataRB(Name, Class, Height, Weight);
+    public void AddDataRB(String Name, String Class, String Height, double Weight, double sp, double acc, double agil, double awa, double btk,
+                          double elu, double tru, double carr, double sta, double inj) {
+        boolean insertData = mDBhelper.addDataRB(Name, Class, Height, Weight, sp, acc, agil, awa, btk, elu, tru, carr, sta, inj);
 
         if(insertData){
             toastMessage("Successful");
@@ -454,22 +432,6 @@ public class PlayerCreator extends AppCompatActivity {
         InjInt = Integer.parseInt(Inj);
         return InjInt;
     }
-
-     /*this.Class      = getYearClass();
-            this.Height     = getHeight();
-            this.Weight     = getWeightInt();
-            this.Speed      = getSpeedInt();
-            this.Accel      = getAccelInt();
-            this.Agile      = getAgileInt();
-            this.Aware      = getAwareInt();
-            this.NCAATHP    = getTHPInt();
-            this.NCAATHA    = getTHAInt();
-            this.BreakTack  = getBTKInt();
-            this.Elusive    = getELUInt();
-            this.Trucking   = getTRKInt();
-            this.Carry      = getCARInt();
-            this.Stamina    = getSTAInt();
-            this.Injury     = getInjInt();*/
 
     public EditText getFirstName() {
         return (EditText) this.findViewById(R.id.FirstNameEdit);

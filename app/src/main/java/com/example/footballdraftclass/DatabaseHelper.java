@@ -18,6 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL4        = "Height";
     private static final String COL5        = "Weight";
 
+    private static final String OL1         = "Offensive Line Position";
+
     //QB ratings
     private static final String QB1         = "Speed";
     private static final String QB2         = "Acceleration";
@@ -32,6 +34,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String QB11        = "Stamina";
     private static final String QB12        = "Injury";
 
+    String createTableQB = "CREATE TABLE " + "Quarterbacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " +
+            QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + QB4 + " INTEGER, " +
+            QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " +
+            QB9 + " INTEGER, " + QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
+
+    String createTableRB = "CREATE TABLE " + "RunningBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER," + "Speed" +
+            " INTEGER, " +  "Acceleration" + " INTEGER, " +  "Agility" + " INTEGER, " + "Awareness" +
+            " INTEGER, " +  "BreakTackle" + " INTEGER, " + "Elusivenss" + " INTEGER, " + "Trucking" +
+            " INTEGER, " + "Carrying" + " INTEGER, " +  "Stamina" + " INTEGER, " + "Injury" + " INTEGER)";
+
+    String createTableFB = "CREATE TABLE " + "FullBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
+
+    String createTableWR = "CREATE TABLE " + "WideReceivers " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
+
+    String createTableTE = "CREATE TABLE " + "TightEnds " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
+
+    String createTableOL = "CREATE TABLE " + "OffensiveLine " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + "Position" + " TEXT)";
 
     public DatabaseHelper(Context context, String TABLE_NAME) {
         super(context, TABLE_NAME, null, 1);
@@ -40,21 +65,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableQB = "CREATE TABLE " + "Quarterbacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " +
-                QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + QB4 + " INTEGER, " +
-                QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " +
-                QB9 + " INTEGER, " + QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
-
-        String createTableRB = "CREATE TABLE " + "RunningBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
-
-        String createTableFB = "CREATE TABLE " + "FullBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER)";
-
         db.execSQL(createTableQB);
         db.execSQL(createTableRB);
         db.execSQL(createTableFB);
+        //db.execSQL(createTableOL);
     }
 
     @Override
@@ -63,8 +77,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addDataQB(String name, String c, String h, double w, double sp, double acc, double agil, double awa, double thp, double tha, double
-                             btk, double elu, double tru, double car, double sta, double inj) {
+    public boolean addDataQB(String name, String c, String h, double w, double sp, double acc, double agil, double awa, double thp, double tha,
+                             double btk, double elu, double tru, double car, double sta, double inj) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, name);
@@ -95,13 +109,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    public boolean addDataRB(String Name, String Class, String Height, double Weight) {
+    public boolean addDataRB(String Name, String Class, String Height, double Weight, double sp, double acc, double agil, double awa, double btk,
+                             double elu, double tru, double car, double sta, double inj) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, Name);
         contentValues.put(COL3, Class);
         contentValues.put(COL4, Height);
         contentValues.put(COL5, Weight);
+        contentValues.put("Speed", sp);
+        contentValues.put("Acceleration", acc);
+        contentValues.put("Agility", agil);
+        contentValues.put("Awareness", awa);
+        contentValues.put("BreakTackle", btk);
+        contentValues.put("Elusiveness", elu);
+        contentValues.put("Trucking", tru);
+        contentValues.put("Carrying", car);
+        contentValues.put("Stamina", sta);
+        contentValues.put("Injury", inj);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
