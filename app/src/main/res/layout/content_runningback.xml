@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".PlayerCreator"
-    tools:showIn="@layout/activity_quarterback">
+    tools:showIn="@layout/activity_runningback">
 
     <LinearLayout
         android:id="@+id/firstname"
@@ -182,21 +182,21 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/attr3"
+                    android:id="@+id/attr4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/TPText"
-                        android:text="Throw Power:"
+                        android:id="@+id/BTKText"
+                        android:text="Break Tackle:"
                         android:textSize="18dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <EditText
-                        android:id="@+id/TP"
+                        android:id="@+id/BTK"
                         android:hint="0 - 99"
                         android:inputType="number"
                         android:gravity="center"
@@ -206,15 +206,15 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:id="@+id/TAText"
-                        android:text="Throw Accuracy:"
+                        android:id="@+id/ElusiveText"
+                        android:text="Elusiveness:"
                         android:textSize="18dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="40dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <EditText
-                        android:id="@+id/TA"
+                        android:id="@+id/Elusive"
                         android:hint="0 - 99"
                         android:inputType="number"
                         android:gravity="center"
@@ -222,49 +222,6 @@
                         android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <LinearLayout
-                android:id="@+id/attr4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/BTKText"
-                    android:text="Break Tackle:"
-                    android:textSize="18dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <EditText
-                    android:id="@+id/BTK"
-                    android:hint="0 - 99"
-                    android:inputType="number"
-                    android:gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/ElusiveText"
-                    android:text="Elusiveness:"
-                    android:textSize="18dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <EditText
-                    android:id="@+id/Elusive"
-                    android:hint="0 - 99"
-                    android:inputType="number"
-                    android:gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -354,18 +311,18 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/ConfirmQuartback"
+                    android:id="@+id/ConfirmRunningBack"
                     android:layout_gravity="center"
                     android:text="Confirm"
                     android:textSize="25dp"
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="QuarterbackErrorCheck"/>
+                    android:onClick="RunningBackErrorCheck"/>
             </LinearLayout>
 
         </ScrollView>
-        
+
     </LinearLayout>
 
 </RelativeLayout>

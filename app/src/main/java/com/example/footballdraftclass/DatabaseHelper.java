@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     String createTableRB = "CREATE TABLE " + "RunningBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER," + "Speed" +
             " INTEGER, " +  "Acceleration" + " INTEGER, " +  "Agility" + " INTEGER, " + "Awareness" +
-            " INTEGER, " +  "BreakTackle" + " INTEGER, " + "Elusivenss" + " INTEGER, " + "Trucking" +
+            " INTEGER, " +  "BreakTackle" + " INTEGER, " + "Elusiveness" + " INTEGER, " + "Trucking" +
             " INTEGER, " + "Carrying" + " INTEGER, " +  "Stamina" + " INTEGER, " + "Injury" + " INTEGER)";
 
     String createTableFB = "CREATE TABLE " + "FullBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +

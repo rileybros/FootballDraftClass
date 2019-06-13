@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_quarterback"/>
+    <include layout="@layout/content_runningback"/>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -24,13 +24,13 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="4cbfb5fb-b40b-4c97-b682-f75f72457db7">
+      <connection connection-id="20e043b5-73ee-4861-8603-c7e3b2ccdcd3">
         <schema name="main" object-types="index, dataset trigger, table, column, view, constraint" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="4cbfb5fb-b40b-4c97-b682-f75f72457db7">
+    <connection id="20e043b5-73ee-4861-8603-c7e3b2ccdcd3">
       <console name="Connection" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
@@ -38,10 +38,12 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="4cbfb5fb-b40b-4c97-b682-f75f72457db7" />
+    <connection id="20e043b5-73ee-4861-8603-c7e3b2ccdcd3" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="4cbfb5fb-b40b-4c97-b682-f75f72457db7" dataset="main.OffensiveLine" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="20e043b5-73ee-4861-8603-c7e3b2ccdcd3" dataset="main.Quarterbacks" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="20e043b5-73ee-4861-8603-c7e3b2ccdcd3" dataset="main.FullBacks" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="20e043b5-73ee-4861-8603-c7e3b2ccdcd3" dataset="main.RunningBacks" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers>
@@ -68,7 +70,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="4cbfb5fb-b40b-4c97-b682-f75f72457db7" active="true">
+      <connection id="20e043b5-73ee-4861-8603-c7e3b2ccdcd3" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
