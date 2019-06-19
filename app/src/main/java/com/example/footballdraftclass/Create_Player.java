@@ -32,8 +32,6 @@ public class Create_Player extends AppCompatActivity {
         if (actionBar != null) {
 
         }
-        Intent receivedIntent = getIntent();
-        Bundle args = receivedIntent.getBundleExtra("BundleQB");
 
         rdgroup1 = findViewById(R.id.positionsgroup1);
         rdgroup2 = findViewById(R.id.positionsgroup2);
