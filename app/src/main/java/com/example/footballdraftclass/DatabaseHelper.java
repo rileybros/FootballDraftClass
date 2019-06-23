@@ -40,6 +40,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " +
             QB9 + " INTEGER, " + QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
 
+    String createProTableQB = "CREATE TABLE" + "ProQuarterbacks" + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + "BestOverall" + " INTEGER, "
+            + QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + "Strength" + " INTEGER, " + QB4 + " INTEGER, "
+            + QB10 + " INTEGER, " + QB5 + " INTEGER, " + "ShortThrowAcc" + " INTEGER, " + "MediumThrowAcc" + " INTEGER, "
+            + "DeepThrowAcc" + " INTEGER, " + "ThrowOnRun" + " INTEGER, " + "ThrowUnderPressure" + " INTEGER, " + "PlayAction"
+            + " INTEGER, " + "BreakSack" + " INTEGER)";
+
     String createTableRB = "CREATE TABLE " + "RunningBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER," + "Speed" +
             " INTEGER, " +  "Acceleration" + " INTEGER, " +  "Agility" + " INTEGER, " + "Awareness" +
@@ -101,6 +108,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "addData: Adding all data to Quarterback database");
 
         long result = db.insert(TABLE_NAME, null, contentValues);
+
+        if (result == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    public boolean addDataProQB(String name, String c, String h, double w, double sp, double acc, double agil, double awa, double thp, double tha,
+                             double btk, double elu, double tru, double car, double sta, double inj) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL2, name);
+        contentValues.put(COL3, c);
+        contentValues.put(COL4, h);
+        contentValues.put(COL5, w);
+        contentValues.put(QB1, sp);
+        contentValues.put(QB2, acc);
+        contentValues.put(QB3, agil);
+        contentValues.put(QB4, awa);
+        contentValues.put(QB5, thp);
+        contentValues.put(QB6, tha);
+        contentValues.put(QB7, btk);
+        contentValues.put(QB8, elu);
+        contentValues.put(QB9, tru);
+        contentValues.put(QB10, car);
+        contentValues.put(QB11, sta);
+        contentValues.put(QB12, inj);
+
+        Log.d(TAG, "addData: Adding all data to Quarterback database");
+
+        long result = db.insert("ProQuarterbacks", null, contentValues);
 
         if (result == -1){
             return false;

@@ -81,11 +81,30 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"/>
 
+    <EditText
+        android:id="@+id/School"
+        android:gravity="center"
+        android:hint="Enter Player's College"
+        android:layout_below="@+id/Weight"
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/ProjRound"
+        android:gravity="center"
+        android:layout_below="@+id/Height"
+        android:layout_marginTop="35dp"
+        android:layout_toRightOf="@+id/School"
+        android:layout_marginLeft="60dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/AttributesPage"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/Weight">
+        android:layout_below="@+id/School">
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">

@@ -56,12 +56,16 @@ public class PlayerCreator extends AppCompatActivity {
     public void makeSpinners() {
         Spinner spinner = findViewById(R.id.ClassYear);
         Spinner spinner1 = findViewById(R.id.Height);
+        Spinner spinner2 = findViewById(R.id.ProjRound);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.year_array, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.heights, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.projRound, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner1.setAdapter(adapter1);
+        spinner2.setAdapter(adapter2);
     }
 
     public void QuarterbackErrorCheck(View view) {
@@ -561,7 +565,7 @@ public class PlayerCreator extends AppCompatActivity {
     private void create() {
         if (selectedDatabase.equals("Quarterbacks")){
             Quarterback newer = new Quarterback(getFirstName().getText().toString()+" "+getLastName().getText().toString(), getYearClass(), getHeight(), getWeightInt(), getSpeedInt(), getAccelInt(), getAgileInt(), getAwareInt(),
-                    getTHPInt(), getTHAInt(), getBTKInt(), getELUInt(), getTRKInt(), getCARInt(), getSTAInt(), getInjInt());
+                    getTHPInt(), getTHAInt(), getBTKInt(), getELUInt(), getTRKInt(), getCARInt(), getSTAInt(), getInjInt(), getSchool().getText().toString(), getProjRound());
             AddDataQB(newer.FullName, newer.Class, newer.Height, newer.Weight, newer.Speed, newer.Accel, newer.Agile, newer.Aware, newer.NCAATHP,
                     newer.NCAATHA, newer.BreakTack, newer.Elusive, newer.Trucking, newer.Carry, newer.Stamina, newer.Injury);
 
@@ -573,6 +577,9 @@ public class PlayerCreator extends AppCompatActivity {
             AddDataRB(newer.FullName, newer.Class, newer.Height, newer.Weight, newer.Speed, newer.Accel, newer.Agile, newer.Aware,
                     newer.BreakTack, newer.Elusive, newer.Trucking, newer.Carry, newer.Stamina, newer.Injury);
             finish();
+        }
+        else {
+
         }
     }
 
@@ -688,6 +695,14 @@ public class PlayerCreator extends AppCompatActivity {
     }
     public EditText getWeight() {
         return (EditText) this.findViewById(R.id.Weight);
+    }
+    public EditText getSchool() {
+        return (EditText) this.findViewById(R.id.School);
+    }
+    public String getProjRound() {
+        Spinner spinner = findViewById(R.id.ProjRound);
+        String text = spinner.getSelectedItem().toString();
+        return text;
     }
     public EditText getSpeed() {
         return (EditText) this.findViewById(R.id.Speed);

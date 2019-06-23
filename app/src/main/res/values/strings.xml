@@ -28,6 +28,17 @@
         <item>6-10</item>
         <item>6-11</item>
     </string-array>
+    <string-array name="projRound">
+        <item>Proj Round</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>Undrafted</item>
+    </string-array>
     <string name="app_name">Draft Class Creator</string>
     <string name="description">An app that will take your NCAA football characters and convert them to rookie level Madden players!!</string>
     <string name="title_activity_home_page">HomePage</string>
