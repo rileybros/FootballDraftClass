@@ -112,6 +112,21 @@ public class PlayerCreator extends AppCompatActivity {
 
             return;
         }
+        if (StringUtils.isEmpty(this.getSchool().getText().toString())){
+            new AlertDialog.Builder(this)
+                    .setMessage("Please Enter in Players's College")
+                    .create()
+                    .show();
+            this.getSchool().requestFocus();
+            return;
+        }
+        if (getProjRound().equals("Proj Round")) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Please Select Player's Projected Round")
+                    .create()
+                    .show();
+            return;
+        }
         if (StringUtils.isEmpty(this.getSpeed().getText().toString())) {
             new AlertDialog.Builder(this)
                     .setMessage("Please Enter Player's Speed rating")
