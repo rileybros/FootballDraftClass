@@ -35,10 +35,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String QB12        = "Injury";
 
     String createTableQB = "CREATE TABLE " + "Quarterbacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " +
-            QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + QB4 + " INTEGER, " +
-            QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " +
-            QB9 + " INTEGER, " + QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + "College" + " TEXT, " +
+            "ProjectedRound" + " TEXT, "   + QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + QB4 + " INTEGER, "
+            + QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " + QB9 + " INTEGER, " +
+            QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
 
     String createProTableQB = "CREATE TABLE" + "ProQuarterbacks" + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + "BestOverall" + " INTEGER, "
@@ -84,7 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addDataQB(String name, String c, String h, double w, double sp, double acc, double agil, double awa, double thp, double tha,
+    public boolean addDataQB(String name, String c, String h, String college, String proj, double w, double sp, double acc, double agil, double awa, double thp, double tha,
                              double btk, double elu, double tru, double car, double sta, double inj) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -92,6 +92,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL3, c);
         contentValues.put(COL4, h);
         contentValues.put(COL5, w);
+        contentValues.put("College", college);
+        contentValues.put("ProjectedRound", proj);
         contentValues.put(QB1, sp);
         contentValues.put(QB2, acc);
         contentValues.put(QB3, agil);
@@ -186,8 +188,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getItem(String name, String COL) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COL + " FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" +
+        String query = "SELECT " + COL + COL3 + " FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" +
                 name + "'";
+        Log.d(TAG, query);
+        Cursor data = db.rawQuery(query, null);
+        System.out.println(data);
+        return data;
+    }
+
+    public Cursor getPlayer(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + name + "'";
         Log.d(TAG, query);
         Cursor data = db.rawQuery(query, null);
         return data;

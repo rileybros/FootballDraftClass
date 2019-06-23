@@ -19,7 +19,6 @@
         <EditText
             android:id="@+id/FullNameEdit"
             android:hint="Enter Player's Full Name"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:layout_width="400dp"
             android:layout_height="wrap_content" />
@@ -41,6 +40,7 @@
         android:layout_toRightOf="@+id/YearinSchool"
         android:layout_marginLeft="25dp"
         android:gravity="center"
+        android:textAlignment="center"
         android:layout_below="@+id/firstname"
         android:layout_marginTop="10dp"
         android:layout_width="225dp"
@@ -58,6 +58,7 @@
     <Spinner
         android:id="@+id/Height"
         android:gravity="center"
+        android:textAlignment="center"
         android:layout_toRightOf="@+id/Weight"
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/YearinSchool"
@@ -65,12 +66,31 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"/>
 
+    <EditText
+        android:id="@+id/School"
+        android:gravity="center"
+        android:hint="Enter Player's College"
+        android:layout_below="@+id/Weight"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/ProjRound"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_below="@+id/Height"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/School"
+        android:layout_marginLeft="30dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/AttributesPage"
         android:layout_centerHorizontal="true"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/Weight">
+        android:layout_below="@+id/School">
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">

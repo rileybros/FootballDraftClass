@@ -47,7 +47,7 @@ public class CreateDraft extends AppCompatActivity {
 
     private void populatelistview() {
         Log.d(TAG, "populatelistview: Displaying data in listview ");
-        Log.d(TAG, "opening: opeing " + Database + " database!");
+        Log.d(TAG, "opening: opening " + Database + " database!");
 
         Cursor data = mDBHelper.getData();
         ArrayList<String> listArray = new ArrayList<>();
@@ -63,17 +63,69 @@ public class CreateDraft extends AppCompatActivity {
                 String name = adapterView.getItemAtPosition(i).toString();
                 Log.d(TAG, "onItemClick: You Clicked on " + name);
 
-                Cursor data = mDBHelper.getItem(name, "ID");
+                Cursor data = mDBHelper.getPlayer(name);
                 int itemID = -1;
+                String Class = " Bad Man ";
+                String Weight = " ";
+                String Height = " ";
+                String College = " ";
+                String ProjRound = " ";
+                String speed = " ";
+                String accel = " ";
+                String agile = " ";
+                String aware = " ";
+                String thp = " ";
+                String tha = " ";
+                String btk = " ";
+                String elu = " ";
+                String truck = " ";
+                String car = " ";
+                String sta = " ";
+                String inj = " ";
                 while (data.moveToNext())
                 {
                     itemID = data.getInt(0);
+                    Class = data.getString(2);
+                    Weight = data.getString(4);
+                    Height = data.getString(3);
+                    College = data.getString(5);
+                    ProjRound = data.getString(6);
+                    speed = Double.toString(data.getDouble(7));
+                    accel = Double.toString(data.getDouble(8));
+                    agile = Double.toString(data.getDouble(9));
+                    aware = Double.toString(data.getDouble(10));
+                    thp = Double.toString(data.getDouble(11));
+                    tha = Double.toString(data.getDouble(12));
+                    btk = Double.toString(data.getDouble(13));
+                    elu = Double.toString(data.getDouble(14));
+                    truck = Double.toString(data.getDouble(15));
+                    car = Double.toString(data.getDouble(16));
+                    sta = Double.toString(data.getDouble(17));
+                    inj = Double.toString(data.getDouble(18));
+
                 }
                 if (itemID > -1) {
                     Log.d(TAG, "onItemClick: The ID is " + itemID);
                     Intent next = new Intent(getApplicationContext(), EditPlayer.class);
                     next.putExtra("id", itemID);
                     next.putExtra("name", name);
+                    next.putExtra("class", Class);
+                    next.putExtra("weight", Weight);
+                    next.putExtra("height", Height);
+                    next.putExtra("college", College);
+                    next.putExtra("project", ProjRound);
+                    next.putExtra("speed", speed);
+                    next.putExtra("acceleration", accel);
+                    next.putExtra("agile", agile);
+                    next.putExtra("aware", aware);
+                    next.putExtra("thp", thp);
+                    next.putExtra("tha", tha);
+                    next.putExtra("btk", btk);
+                    next.putExtra("elu", elu);
+                    next.putExtra("car", car);
+                    next.putExtra("truck", truck);
+                    next.putExtra("sta", sta);
+                    next.putExtra("inj", inj);
                     next.putExtra("Database", Database);
                     startActivity(next);
                     finish();

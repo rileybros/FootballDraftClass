@@ -35,9 +35,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="eae727d5-aa67-47df-ad2a-5ce63ed49e3d" object-ref="schemas/main/tables/Quarterbacks" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="eae727d5-aa67-47df-ad2a-5ce63ed49e3d" />

@@ -579,9 +579,10 @@ public class PlayerCreator extends AppCompatActivity {
 
     private void create() {
         if (selectedDatabase.equals("Quarterbacks")){
-            Quarterback newer = new Quarterback(getFirstName().getText().toString()+" "+getLastName().getText().toString(), getYearClass(), getHeight(), getWeightInt(), getSpeedInt(), getAccelInt(), getAgileInt(), getAwareInt(),
-                    getTHPInt(), getTHAInt(), getBTKInt(), getELUInt(), getTRKInt(), getCARInt(), getSTAInt(), getInjInt(), getSchool().getText().toString(), getProjRound());
-            AddDataQB(newer.FullName, newer.Class, newer.Height, newer.Weight, newer.Speed, newer.Accel, newer.Agile, newer.Aware, newer.NCAATHP,
+            Quarterback newer = new Quarterback(getFirstName().getText().toString()+" "+getLastName().getText().toString(), getYearClass(), getHeight(), getWeightInt(),
+                    getSpeedInt(), getAccelInt(), getAgileInt(), getAwareInt(), getTHPInt(), getTHAInt(), getBTKInt(), getELUInt(), getTRKInt(), getCARInt(), getSTAInt(), getInjInt(),
+                    getSchool().getText().toString(), getProjRound());
+            AddDataQB(newer.FullName, newer.Class, newer.Height, newer.college, newer.round, newer.Weight,  newer.Speed, newer.Accel, newer.Agile, newer.Aware, newer.NCAATHP,
                     newer.NCAATHA, newer.BreakTack, newer.Elusive, newer.Trucking, newer.Carry, newer.Stamina, newer.Injury);
 
             finish();
@@ -598,9 +599,9 @@ public class PlayerCreator extends AppCompatActivity {
         }
     }
 
-    public void AddDataQB(String Name, String Class, String Height, double Weight, double sp, double acc, double agil, double awa, double thp,
+    public void AddDataQB(String Name, String Class, String Height, String College, String ProjR, double Weight, double sp, double acc, double agil, double awa, double thp,
                           double tha, double btk, double elu, double tru, double carr, double sta, double inj) {
-        boolean insertData = mDBhelper.addDataQB(Name, Class, Height, Weight, sp, acc, agil, awa, thp, tha, btk, elu, tru, carr, sta, inj);
+        boolean insertData = mDBhelper.addDataQB(Name, Class, Height, College, ProjR, Weight, sp, acc, agil, awa, thp, tha, btk, elu, tru, carr, sta, inj);
 
         if(insertData){
             toastMessage("Successful");
