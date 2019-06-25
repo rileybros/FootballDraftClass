@@ -81,80 +81,82 @@ public class Quarterback extends Offense {
 
         public double ProTHP(double THP){
             Random r = new Random();
-            double max = THP;
-            double min = (THP * .98);
+            double max = Math.min(THP, 99);
+            double min = Math.max((THP * .97), 82);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double ProSp(double sp) {
             Random r = new Random();
-            double max = sp;
-            double min = (sp * .98);
+            double max = Math.min(sp, 93);
+            double min = Math.max((sp * .94), 70);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double ProAcc(double acc) {
             Random r = new Random();
-            double max = (acc * .98);
-            double min = (acc * .90);
+            double max = Math.min(acc, 94);
+            double min = Math.max((acc * .94), 80);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double ProAgil(double agi) {
             Random r = new Random();
-            double max = agi * .98;
-            double min = agi * .9;
+            double max = Math.min(agi, 96);
+            double min = Math.max((agi * .85), 65);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double ProStr() {
             Random r = new Random();
-            double min = 40;
-            double max = 75;
-            double temp = min + (max - min) * r.nextDouble();
+            double min = 53;
+            double max = 72;
+            double t = min + (max - min) * r.nextDouble();
+            double a = min + (max - min) * r.nextDouble();
+            double temp = Math.max(t, a);
             return temp;
         }
         public double ProAwa(double a) {
             Random r = new Random();
-            double min = a * .55;
-            double max = a * .75;
+            double min = Math.max((a*.65), 50);
+            double max = Math.min(a, 78);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double ProCar(double c) {
             Random r = new Random();
-            double min = c * .75;
-            double max = c;
+            double min = Math.max((c*.50), 49);
+            double max = Math.min(c, 68);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double STA(double a){
             Random r = new Random();
-            double min = a * .90;
-            double max = a * .97;
+            double min = Math.max((a*.82), 77);
+            double max = Math.min((a*.95), 89);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double MTA(double a) {
             Random r = new Random();
-            double min = a * .80;
-            double max = a * .90;
+            double min = Math.max((a*.70), 70);
+            double max = Math.min((a*.85), 85);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double DTA(double a) {
             Random r = new Random();
-            double min = a * .73;
-            double max = a * .80;
+            double min = Math.max((a*.60), 63);
+            double max = Math.min((a*.77), 81);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double TOR() {
             Random r = new Random();
-            double min = 65;
+            double min = 71;
             double max = 80;
             double min1 = 81;
-            double max1 = 99;
+            double max1 = 89;
             double temp = min + (max - min) * r.nextDouble();
             double temp1 = min1 + (max1 - min1) * r.nextDouble();
             double tempfinal = temp + (temp1 - temp) * r.nextDouble();
@@ -162,10 +164,10 @@ public class Quarterback extends Offense {
         }
         public double TUP() {
             Random r = new Random();
-            double min = 65;
-            double max = 80;
-            double min1 = 81;
-            double max1 = 99;
+            double min = 63;
+            double max = 77;
+            double min1 = 78;
+            double max1 = 87;
             double temp = min + (max - min) * r.nextDouble();
             double temp1 = min1 + (max1 - min1) * r.nextDouble();
             double tempfinal = temp + (temp1 - temp) * r.nextDouble();
@@ -173,10 +175,10 @@ public class Quarterback extends Offense {
         }
         public double PAC() {
             Random r = new Random();
-            double min = 65;
-            double max = 80;
-            double min1 = 81;
-            double max1 = 99;
+            double min = 68;
+            double max = 77;
+            double min1 = 78;
+            double max1 = 85;
             double temp = min + (max - min) * r.nextDouble();
             double temp1 = min1 + (max1 - min1) * r.nextDouble();
             double tempfinal = temp + (temp1 - temp) * r.nextDouble();
@@ -184,10 +186,10 @@ public class Quarterback extends Offense {
         }
         public double BSK() {
             Random r = new Random();
-            double min = 65;
-            double max = 80;
-            double min1 = 81;
-            double max1 = 99;
+            double min = 40;
+            double max = 65;
+            double min1 = 66;
+            double max1 = 89;
             double temp = min + (max - min) * r.nextDouble();
             double temp1 = min1 + (max1 - min1) * r.nextDouble();
             double tempfinal = temp + (temp1 - temp) * r.nextDouble();
