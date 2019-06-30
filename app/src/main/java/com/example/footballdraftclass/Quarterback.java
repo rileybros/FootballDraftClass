@@ -7,12 +7,12 @@ public class Quarterback extends Offense {
         //QB-only Ratings
         double 	ProTHP;     String college;
         double 	STA;        String round;
-        double 	MTA;
-        double 	DTA ;
-        double 	PAC;
-        double 	TOR;
-        double 	TUP;
-        double	BSK;
+        double 	MTA;        double ProPOW;
+        double 	DTA ;       double ProPursuit;
+        double 	PAC;        double ProTackle;
+        double 	TOR;        double ProTough;
+        double 	TUP;        double ProOverallTHA;
+        double	BSK;        double BestOverall;
 
 
         //Base Ratings
@@ -27,58 +27,75 @@ public class Quarterback extends Offense {
             STA     = 0;        NCAATHP = 0;
             MTA     = 0;        college  = school;
             DTA     = 0;        round = projRound;
-            PAC     = 0;
-            TOR     = 0;
-            TUP     = 0;
-            BSK     = 0;
+            PAC     = 0;        ProPOW = 0;
+            TOR     = 0;        ProPursuit = 0;
+            TUP     = 0;        ProTackle = 0;
+            BSK     = 0;        ProTough = 0;
+            ProOverallTHA = 0;
+            BestOverall = 0;
 
-            update(fName, year, height, weight, speed, accel, agile, aware, THP, THA, Btk, elu, tru, car, sta, inj);
-            update2(speed, accel, agile, aware, car, THP, THA, projRound);
-        }
-
-        public void update(String fName, String year, String h, double w, double s, double a, double ag, double aw,
-                       double p, double acc, double btk, double elu, double tru, double car, double sta, double inj) {
             this.FullName   = fName;
             this.Class      = year;
-            this.Height     = h;
-            this.Weight     = w;
-            this.Speed      = s;
-            this.Accel      = a;
-            this.Agile      = ag;
-            this.Aware      = aw;
-            this.NCAATHP    = p;
-            this.NCAATHA    = acc;
-            this.BreakTack  = btk;
+            this.Height     = height;
+            this.Weight     = weight;
+            this.Speed      = speed;
+            this.Accel      = accel;
+            this.Agile      = agile;
+            this.Aware      = aware;
+            this.NCAATHP    = THP;
+            this.NCAATHA    = THA;
+            this.BreakTack  = Btk;
             this.Elusive    = elu;
             this.Trucking   = tru;
             this.Carry      = car;
             this.Stamina    = sta;
             this.Injury     = inj;
 
-
+            update();
         }
 
-        public void update2(double sp, double acc, double agile, double aware, double car, double THP, double THA, String projR) {
+        public void update() {
 
-            this.ProSpeed = ProSp(sp);
-            this.ProAccel = ProAcc(acc);
-            this.ProAgile = ProAgil(agile);
+            this.ProSpeed = ProSp(this.Speed);
+            this.ProAccel = ProAcc(this.Accel);
+            this.ProAgile = ProAgil(this.Agile);
             this.ProStrength = ProStr();
-            this.ProAware = ProAwa(aware);
-            this.ProCarry = ProCar(car);
-            this.ProTHP = ProTHP(THP);
-            this.STA    = STA(THA);
-            this.MTA    = MTA(THA);
-            this.DTA    = DTA(THA);
+            this.ProAware = ProAwa(this.Aware);
+            this.ProCarry = ProCar(this.Carry);
+            this.ProTHP = ProTHP(this.NCAATHP);
+            this.STA    = STA(this.NCAATHA);
+            this.MTA    = MTA(this.NCAATHA);
+            this.DTA    = DTA(this.NCAATHA);
+            this.ProOverallTHA = OverThAcc(this.NCAATHA);
+            this.ProInjury = INJ(this.Injury);
+            this.ProTruck = Trk(this.Trucking);
+            this.ProStamina = proStam(this.Stamina);
             this.TOR    = TOR();
             this.TUP    = TUP();
             this.PAC    = PAC();
             this.BSK    = BSK();
-            this.ProDevelop = ProDevelop(projR);
+            this.ProBCV = BCV();
+            this.ProBreakTack = BTK();
+            this.ProCatching = CTH();
+            this.ProElusive = ELU();
+            this.ProPOW = POW();
+            this.ProJuke = JKM();
+            this.ProSpC = SPC();
+            this.ProJumping = JMP();
+            this.ProPursuit = PUR();
+            this.ProSpin = SPM();
+            this.ProStiff = StiffArm();
+            this.ProTackle = Tak();
+            this.ProTough = Toughness();
+            this.ProDevelop = ProDevelop(this.round);
             this.Age = determineAge(this.Class);
-
+            this.BestOverall  = bestOverall();
         }
 
+        public double bestOverall() {
+            double a = 0;
+            return a;
+        }
         public double ProTHP(double THP){
             Random r = new Random();
             double max = Math.min(THP, 99);
@@ -89,7 +106,7 @@ public class Quarterback extends Offense {
         public double ProSp(double sp) {
             Random r = new Random();
             double max = Math.min(sp, 93);
-            double min = Math.max((sp * .94), 70);
+            double min = Math.max((sp * .92), 70);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
@@ -118,14 +135,14 @@ public class Quarterback extends Offense {
         }
         public double ProAwa(double a) {
             Random r = new Random();
-            double min = Math.max((a*.65), 50);
+            double min = Math.min((a*.65), 50);
             double max = Math.min(a, 78);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double ProCar(double c) {
             Random r = new Random();
-            double min = Math.max((c*.50), 49);
+            double min = Math.min((c*.50), 49);
             double max = Math.min(c, 68);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
@@ -133,21 +150,42 @@ public class Quarterback extends Offense {
         public double STA(double a){
             Random r = new Random();
             double min = Math.max((a*.82), 77);
-            double max = Math.min((a*.95), 89);
+            double max = Math.min((a*.95), 90);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double MTA(double a) {
             Random r = new Random();
-            double min = Math.max((a*.70), 70);
+            double min = Math.max((a*.75), 73);
             double max = Math.min((a*.85), 85);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
         public double DTA(double a) {
             Random r = new Random();
-            double min = Math.max((a*.60), 63);
-            double max = Math.min((a*.77), 81);
+            double min = Math.max((a*.65), 63);
+            double max = Math.min((a*.85), 81);
+            double temp = min + (max - min) * r.nextDouble();
+            return temp;
+        }
+        public double OverThAcc(double a) {
+            Random r = new Random();
+            double min = Math.max((a*.80), 70);
+            double max = Math.min((a*.99), 97);
+            double temp = min + (max - min) * r.nextDouble();
+            return temp;
+        }
+        public double INJ(double i) {
+            Random r = new Random();
+            double min = Math.max((i*.85), 83);
+            double max = Math.min((i*.95), 94);
+            double temp = min + (max - min) * r.nextDouble();
+            return temp;
+        }
+        public double Trk(double t) {
+            Random r = new Random();
+            double min = Math.max((t*.70), 21);
+            double max = Math.min((t*.95), 67);
             double temp = min + (max - min) * r.nextDouble();
             return temp;
         }
@@ -195,19 +233,218 @@ public class Quarterback extends Offense {
             double tempfinal = temp + (temp1 - temp) * r.nextDouble();
             return tempfinal;
         }
+        public double BCV() {
+            Random r = new Random();
+            double min1 = 31;
+            double max1 = 60;
+            double min2 = 61;
+            double max2 = 93;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double BTK() {
+            Random r = new Random();
+            double min1 = 22;
+            double max1 = 52;
+            double min2 = 53;
+            double max2 = 81;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double CTH() {
+            Random r = new Random();
+            double min1 = 18;
+            double max1 = 38;
+            double min2 = 39;
+            double max2 = 59;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double ELU() {
+            Random r = new Random();
+            double min1 = 28;
+            double max1 = 56;
+            double min2 = 57;
+            double max2 = 85;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double POW() {
+            Random r = new Random();
+            double min1 = 11;
+            double max1 = 23;
+            double min2 = 24;
+            double max2 = 37;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double JKM() {
+            Random r = new Random();
+            double min1 = 35;
+            double max1 = 60;
+            double min2 = 61;
+            double max2 = 89;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double JMP(){
+            Random r = new Random();
+            double min1 = 67;
+            double max1 = 77;
+            double min2 = 78;
+            double max2 = 91;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double SPC() {
+            Random r = new Random();
+            double min1 = 27;
+            double max1 = 57;
+            double min2 = 58;
+            double max2 = 86;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double PUR() {
+            Random r = new Random();
+            double min1 = 19;
+            double max1 = 28;
+            double min2 = 29;
+            double max2 = 38;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double SPM() {
+            Random r = new Random();
+            double min1 = 27;
+            double max1 = 57;
+            double min2 = 58;
+            double max2 = 86;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double StiffArm() {
+            Random r = new Random();
+            double min1 = 23;
+            double max1 = 41;
+            double min2 = 42;
+            double max2 = 60;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double Tak() {
+            Random r = new Random();
+            double min1 = 14;
+            double max1 = 25;
+            double min2 = 26;
+            double max2 = 35;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double Toughness() {
+            Random r = new Random();
+            double min1 = 70;
+            double max1 = 83;
+            double min2 = 84;
+            double max2 = 96;
+            double temp1 = min1 + (max1 - min1) * r.nextDouble();
+            double temp2 = min2 + (max2 - min2) * r.nextDouble();
+            double tempfinal = temp1 + (temp2 - temp1) * r.nextDouble();
+            return tempfinal;
+        }
+        public double proStam(double s) {
+            Random r = new Random();
+            double min = Math.max((s*.90), 87);
+            double max = Math.min(s, 96);
+            double temp = min + (max - min) * r.nextDouble();
+            return temp;
+        }
         public String ProDevelop(String a) {
             Random r = new Random();
-            int devel = r.nextInt(3);
-            boolean val = (devel == 0);
-            boolean val1 = (devel == 1);
-            boolean val2 = (devel == 2);
-            boolean val3 = (devel == 3);
-            if(val){
-
+            if(a.equals("1")){
+                int Development = r.nextInt(101);
+                if(Development > 0 && Development <= 35){
+                    return "Superstar";
+                }
+                else if(Development > 35 && Development <= 60) {
+                    return "Star";
+                }
+                else if(Development > 60 && Development <= 85) {
+                    return "Quick";
+                }
+                else {
+                    return "Normal";
+                }
             }
-
-
-            return a;
+            else if(a.equals("2") || a.equals("3")) {
+                int Development = r.nextInt(101);
+                if(Development > 0 && Development <= 25){
+                    return "Superstar";
+                }
+                else if(Development > 25 && Development <= 55) {
+                    return "Star";
+                }
+                else if(Development > 55 && Development <= 80) {
+                    return "Quick";
+                }
+                else {
+                    return "Normal";
+                }
+            }
+            else if(a.equals("4") || a.equals("5")) {
+                int Development = r.nextInt(101);
+                if(Development > 0 && Development <= 20){
+                    return "Superstar";
+                }
+                else if(Development > 20 && Development <= 55) {
+                    return "Star";
+                }
+                else if(Development > 55 && Development <= 75) {
+                    return "Quick";
+                }
+                else {
+                    return "Normal";
+                }
+            }
+            else {
+                int Development = r.nextInt(101);
+                if(Development > 0 && Development <= 15){
+                    return "Superstar";
+                }
+                else if(Development > 15 && Development <= 40) {
+                    return "Star";
+                }
+                else if(Development > 40 && Development <= 70) {
+                    return "Quick";
+                }
+                else {
+                    return "Normal";
+                }
+            }
         }
         public int determineAge(String year) {
             Random r  = new Random();
@@ -231,7 +468,4 @@ public class Quarterback extends Offense {
             }
 
         }
-
-
-
 }

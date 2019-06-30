@@ -41,11 +41,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
 
     String createProTableQB = "CREATE TABLE" + "ProQuarterbacks" + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + "BestOverall" + " INTEGER, "
-            + QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + "Strength" + " INTEGER, " + QB4 + " INTEGER, "
-            + QB10 + " INTEGER, " + QB5 + " INTEGER, " + "ShortThrowAcc" + " INTEGER, " + "MediumThrowAcc" + " INTEGER, "
-            + "DeepThrowAcc" + " INTEGER, " + "ThrowOnRun" + " INTEGER, " + "ThrowUnderPressure" + " INTEGER, " + "PlayAction"
-            + " INTEGER, " + "BreakSack" + " INTEGER)";
+            COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + "BestOverall" + " INTEGER, " + "College" + " TEXT, "
+            + "ProDevelopment" + " TEXT, " + "Age" + " TEXT, " + QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + "Strength" +
+            " INTEGER, " + QB4 + " INTEGER, " + QB10 + " INTEGER, " + QB5 + " INTEGER, " + "ShortThrowAcc" + " INTEGER, " + "MediumThrowAcc"
+            + " INTEGER, " + "DeepThrowAcc" + " INTEGER, " + QB12 + " INTEGER, " + QB9 + " INTEGER, " + "ThrowOnRun" + " INTEGER, " +
+            "ThrowUnderPressure" + " INTEGER, " + "PlayAction" + " INTEGER, " + "BreakSack" + " INTEGER, " + "ProBCV" + " INTEGER, " +
+            "ProBreakTack" + " INTEGER, " + "ProCatching" + " INTEGER, " + "ProElusive" + " INTEGER, " + "ProHitPower" + " INTEGER, " +
+            "ProJuke" + " INTEGER, " + "ProSpC" + " INTEGER, " + "ProJumping" + " INTEGER, " + "ProPursuit" + " INTEGER, " + "ProSpin" + " INTEGER, "
+            + "ProStiff" + " INTEGER, " + "ProTackle" + " INTEGER, " + "ProTough" + " INTEGER)";
 
     String createTableRB = "CREATE TABLE " + "RunningBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER," + "Speed" +
@@ -75,6 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createTableQB);
         db.execSQL(createTableRB);
         db.execSQL(createTableFB);
+        db.execSQL(createProTableQB);
         //db.execSQL(createTableOL);
     }
 
@@ -84,28 +88,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addDataQB(String name, String c, String h, String college, String proj, double w, double sp, double acc, double agil, double awa, double thp, double tha,
-                             double btk, double elu, double tru, double car, double sta, double inj) {
+    public boolean addDataQB(Quarterback q) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, name);
-        contentValues.put(COL3, c);
-        contentValues.put(COL4, h);
-        contentValues.put(COL5, w);
-        contentValues.put("College", college);
-        contentValues.put("ProjectedRound", proj);
-        contentValues.put(QB1, sp);
-        contentValues.put(QB2, acc);
-        contentValues.put(QB3, agil);
-        contentValues.put(QB4, awa);
-        contentValues.put(QB5, thp);
-        contentValues.put(QB6, tha);
-        contentValues.put(QB7, btk);
-        contentValues.put(QB8, elu);
-        contentValues.put(QB9, tru);
-        contentValues.put(QB10, car);
-        contentValues.put(QB11, sta);
-        contentValues.put(QB12, inj);
+        contentValues.put(COL2, q.FullName);
+        contentValues.put(COL3, q.Class);
+        contentValues.put(COL4, q.Height);
+        contentValues.put(COL5, q.Weight);
+        contentValues.put("BestOverall", q.BestOverall);
+        contentValues.put("College", q.college);
+        contentValues.put("ProjectedRound", q.round);
+        contentValues.put(QB1, q.Speed);
+        contentValues.put(QB2, q.Accel);
+        contentValues.put(QB3, q.Agile);
+        contentValues.put(QB4, q.Aware);
+        contentValues.put(QB5, q.NCAATHP);
+        contentValues.put(QB6, q.NCAATHA);
+        contentValues.put(QB7, q.BreakTack);
+        contentValues.put(QB8, q.Elusive);
+        contentValues.put(QB9, q.Trucking);
+        contentValues.put(QB10, q.Carry);
+        contentValues.put(QB11, q.Stamina);
+        contentValues.put(QB12, q.Injury);
 
         Log.d(TAG, "addData: Adding all data to Quarterback database");
 
@@ -118,26 +122,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    public boolean addDataProQB(String name, String c, String h, double w, double sp, double acc, double agil, double awa, double thp, double tha,
-                             double btk, double elu, double tru, double car, double sta, double inj) {
+    public boolean addDataProQB(Quarterback q) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, name);
-        contentValues.put(COL3, c);
-        contentValues.put(COL4, h);
-        contentValues.put(COL5, w);
-        contentValues.put(QB1, sp);
-        contentValues.put(QB2, acc);
-        contentValues.put(QB3, agil);
-        contentValues.put(QB4, awa);
-        contentValues.put(QB5, thp);
-        contentValues.put(QB6, tha);
-        contentValues.put(QB7, btk);
-        contentValues.put(QB8, elu);
-        contentValues.put(QB9, tru);
-        contentValues.put(QB10, car);
-        contentValues.put(QB11, sta);
-        contentValues.put(QB12, inj);
+        contentValues.put(COL2, q.FullName);
+        contentValues.put(COL3, q.Class);
+        contentValues.put(COL4, q.Height);
+        contentValues.put(COL5, q.Weight);
+        contentValues.put(QB1, q.ProSpeed);
+        contentValues.put(QB2, q.ProAccel);
+        contentValues.put(QB3, q.ProAgile);
+        contentValues.put(QB4, q.ProAware);
+        contentValues.put(QB5, q.ProTHP);
+        contentValues.put("ShortThrowAcc", q.STA);
+        contentValues.put("MediumThrowAcc", q.MTA);
+        contentValues.put("DeepThrowAcc", q.DTA);
+        contentValues.put(QB7, q.ProBreakTack);
+        contentValues.put(QB8, q.ProElusive);
+        contentValues.put(QB9, q.ProTruck);
+        contentValues.put(QB10, q.ProCarry);
+        contentValues.put(QB11, q.ProStamina);
+        contentValues.put(QB12, q.ProInjury);
+        contentValues.put("ProDevelopment", q.ProDevelop);
+        contentValues.put("Strength", q.ProStrength);
+        contentValues.put("ThrowOnRun", q.TOR);
+        contentValues.put("ThrowUnderPressure", q.TUP);
+        contentValues.put("PlayAction", q.PAC);
+        contentValues.put("BreakSack", q.BSK);
+        contentValues.put("ProBCV", q.ProBCV);
+        contentValues.put("ProCatching", q.ProCatching);
+        contentValues.put("ProElusive", q.ProElusive);
+        contentValues.put("ProHitPower", q.ProPOW);
+        contentValues.put("ProJuke", q.ProJuke);
+        contentValues.put("ProSpC", q.ProSpC);
+        contentValues.put("ProJumping", q.ProJumping);
+        contentValues.put("ProPursuit", q.ProPursuit);
+        contentValues.put("ProSpin", q.ProSpin);
+        contentValues.put("ProStiff", q.ProStiff);
+        contentValues.put("ProTackle", q.ProTackle);
+        contentValues.put("ProTough", q.ProTough);
+        contentValues.put("Age", q.Age);
+        contentValues.put("BestOverall", q.BestOverall);
 
         Log.d(TAG, "addData: Adding all data to Quarterback database");
 
