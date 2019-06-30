@@ -24,13 +24,13 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="eae727d5-aa67-47df-ad2a-5ce63ed49e3d">
-        <schema name="main" object-types="view, table" />
+      <connection connection-id="514a0acb-1106-4df8-991a-9ebe5fa36c40">
+        <schema name="main" object-types="column, view, constraint, table, dataset trigger, index" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="eae727d5-aa67-47df-ad2a-5ce63ed49e3d">
+    <connection id="514a0acb-1106-4df8-991a-9ebe5fa36c40">
       <console name="Connection" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
@@ -38,10 +38,10 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="eae727d5-aa67-47df-ad2a-5ce63ed49e3d" />
+    <connection id="514a0acb-1106-4df8-991a-9ebe5fa36c40" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="eae727d5-aa67-47df-ad2a-5ce63ed49e3d" dataset="main.Quarterbacks" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="514a0acb-1106-4df8-991a-9ebe5fa36c40" dataset="main.android_metadata" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers>
@@ -68,7 +68,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="eae727d5-aa67-47df-ad2a-5ce63ed49e3d" active="true">
+      <connection id="514a0acb-1106-4df8-991a-9ebe5fa36c40" active="true">
         <database>
           <name value="Connection" />
           <description value="" />

@@ -40,15 +40,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + QB5 + " INTEGER, " + QB6 + " INTEGER, " + QB7 + " INTEGER, " + QB8 + " INTEGER, " + QB9 + " INTEGER, " +
             QB10 + " INTEGER, " + QB11 + " INTEGER, " + QB12 + " INTEGER)";
 
-    String createProTableQB = "CREATE TABLE" + "ProQuarterbacks" + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+    String createProTableQB = "CREATE TABLE " + "ProQuarterbacks" + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER, " + "BestOverall" + " INTEGER, " + "College" + " TEXT, "
             + "ProDevelopment" + " TEXT, " + "Age" + " TEXT, " + QB1 + " INTEGER, " + QB2 + " INTEGER, " + QB3 + " INTEGER, " + "Strength" +
             " INTEGER, " + QB4 + " INTEGER, " + QB10 + " INTEGER, " + QB5 + " INTEGER, " + "ShortThrowAcc" + " INTEGER, " + "MediumThrowAcc"
             + " INTEGER, " + "DeepThrowAcc" + " INTEGER, " + QB12 + " INTEGER, " + QB9 + " INTEGER, " + "ThrowOnRun" + " INTEGER, " +
-            "ThrowUnderPressure" + " INTEGER, " + "PlayAction" + " INTEGER, " + "BreakSack" + " INTEGER, " + "ProBCV" + " INTEGER, " +
-            "ProBreakTack" + " INTEGER, " + "ProCatching" + " INTEGER, " + "ProElusive" + " INTEGER, " + "ProHitPower" + " INTEGER, " +
+            "ThrowUnderPressure" + " INTEGER, " + "PlayAction" + " INTEGER, " + "ProBreakSack" + " INTEGER, " + "ProBCV" + " INTEGER, " +
+            QB7 + " INTEGER, " + "ProCatching" + " INTEGER, " + QB8 + " INTEGER, " + "ProHitPower" + " INTEGER, " +
             "ProJuke" + " INTEGER, " + "ProSpC" + " INTEGER, " + "ProJumping" + " INTEGER, " + "ProPursuit" + " INTEGER, " + "ProSpin" + " INTEGER, "
-            + "ProStiff" + " INTEGER, " + "ProTackle" + " INTEGER, " + "ProTough" + " INTEGER)";
+            + "ProStiff" + " INTEGER, " + "ProTackle" + " INTEGER, " + "ProTough" + " INTEGER, " + QB11 + " INTEGER)";
 
     String createTableRB = "CREATE TABLE " + "RunningBacks " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL2 + " TEXT, " + COL3 + " TEXT, " + COL4 + " TEXT, " + COL5 + " INTEGER," + "Speed" +
@@ -95,7 +95,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL3, q.Class);
         contentValues.put(COL4, q.Height);
         contentValues.put(COL5, q.Weight);
-        contentValues.put("BestOverall", q.BestOverall);
         contentValues.put("College", q.college);
         contentValues.put("ProjectedRound", q.round);
         contentValues.put(QB1, q.Speed);
@@ -129,6 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL3, q.Class);
         contentValues.put(COL4, q.Height);
         contentValues.put(COL5, q.Weight);
+        contentValues.put("College", q.college);
         contentValues.put(QB1, q.ProSpeed);
         contentValues.put(QB2, q.ProAccel);
         contentValues.put(QB3, q.ProAgile);
@@ -148,10 +148,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("ThrowOnRun", q.TOR);
         contentValues.put("ThrowUnderPressure", q.TUP);
         contentValues.put("PlayAction", q.PAC);
-        contentValues.put("BreakSack", q.BSK);
+        contentValues.put("ProBreakSack", q.BSK);
         contentValues.put("ProBCV", q.ProBCV);
         contentValues.put("ProCatching", q.ProCatching);
-        contentValues.put("ProElusive", q.ProElusive);
         contentValues.put("ProHitPower", q.ProPOW);
         contentValues.put("ProJuke", q.ProJuke);
         contentValues.put("ProSpC", q.ProSpC);

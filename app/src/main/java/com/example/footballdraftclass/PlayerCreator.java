@@ -610,7 +610,13 @@ public class PlayerCreator extends AppCompatActivity {
     }
 
     public void AddDataQBPro(Quarterback q) {
-        boolean insertdata = mDBhelper.addDataProQB()
+        boolean insertdata = mDBhelper.addDataProQB(q);
+        if(insertdata) {
+            toastMessage("Successful");
+        }
+        else {
+            toastMessage("Fail");
+        }
     }
 
     public void AddDataRB(String Name, String Class, String Height, double Weight, double sp, double acc, double agil, double awa, double btk,
